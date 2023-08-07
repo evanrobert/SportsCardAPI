@@ -1,6 +1,6 @@
 package com.evanrobert.Json.API;
 
-import com.evanrobert.Json.API.Model.Users;
+import com.evanrobert.Json.API.Model.Cards;
 import com.evanrobert.Json.API.Repos.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -22,12 +22,12 @@ public class Application implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		Users users = new Users();
+		Cards cards = new Cards();
 
-		if (users.isEmpty()) {
-			Users newUser = Users.builder()
-					.firstName("bill")
-					.lastName("Nye")
+		if (cards.isEmpty()) {
+			Cards newUser = cards.builder()
+					.player("bill russell").price(5000).rookie("no").numbered("yes")
+					.yearOfCard("1965")
 					.build();
 
 			usersRepo.save(newUser);

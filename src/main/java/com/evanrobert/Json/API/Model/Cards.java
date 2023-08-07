@@ -2,8 +2,6 @@ package com.evanrobert.Json.API.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.stereotype.Service;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,16 +13,20 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class Cards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String player;
+    private String numbered;
+    private double price;
+    private String yearOfCard;
+    private String rookie;
+
 
     @JsonIgnore
     public boolean isEmpty() {
-        return firstName == null || firstName.isEmpty()
-                && lastName == null || lastName.isEmpty();
+        return player == null || player.isEmpty();
     }
+
 }
