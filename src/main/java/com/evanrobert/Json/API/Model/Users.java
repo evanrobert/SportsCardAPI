@@ -1,5 +1,6 @@
 package com.evanrobert.Json.API.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class Users {
     private String firstName;
     private String lastName;
 
+    @JsonIgnore
     public boolean isEmpty() {
         return firstName == null || firstName.isEmpty()
                 && lastName == null || lastName.isEmpty();
