@@ -32,6 +32,9 @@ public class Controller {
         String message = "Card changed " + "successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
-//    @DeleteMapping("/delete/card{id}")
-//    public void deleteById
-//}
+    @DeleteMapping("/delete/card/{id}")
+    public void deleteById(@PathVariable Long id){
+        usersRepo.deleteById(id);
+    }
+
+}
