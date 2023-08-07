@@ -22,7 +22,8 @@ public class Cards {
     private double price;
     private String yearOfCard;
     private String rookie;
-
+    
+    private String cardName;
 
     @JsonIgnore
     public boolean isEmpty() {
