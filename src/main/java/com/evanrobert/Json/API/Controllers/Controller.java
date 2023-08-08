@@ -41,9 +41,6 @@ public class Controller {
             existingCard.setPlayer(cardUpdate.getPlayer());
         }
 
-        if (cardUpdate.getNumbered() != null) {
-            existingCard.setNumbered(cardUpdate.getNumbered());
-        }
 
         if (cardUpdate.getPrice() != 0) {
             existingCard.setPrice(cardUpdate.getPrice());
@@ -53,6 +50,7 @@ public class Controller {
             existingCard.setYearOfCard(cardUpdate.getYearOfCard());
         }
         existingCard.setRookie(cardUpdate.isRookie());
+        existingCard.setNumbered(cardUpdate.isNumbered());
 
 
 
