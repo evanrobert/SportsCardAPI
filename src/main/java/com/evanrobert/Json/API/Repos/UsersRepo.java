@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UsersRepo extends JpaRepository<Cards,Long> {
     List<Cards> findCardByRookie(boolean rookie);
+    List<Cards> findCardByNumbered(boolean numbered);
 }

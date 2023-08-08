@@ -72,6 +72,11 @@ public class Controller {
         List<Cards> rookieCards = usersRepo.findCardByRookie(rookie);
         return ResponseEntity.status(HttpStatus.OK).body(rookieCards);
     }
+    @GetMapping("/numbered/{numbered}")
+    public ResponseEntity<List<Cards>> findCardByNumbered(@PathVariable("numbered") boolean numbered) {
+        List<Cards> numberedCards = usersRepo.findCardByNumbered(numbered);
+        return ResponseEntity.status(HttpStatus.OK).body(numberedCards);
+    }
 
 
 }
