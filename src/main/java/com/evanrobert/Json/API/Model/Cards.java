@@ -22,8 +22,7 @@ public class Cards {
     private double price;
     private String yearOfCard;
     private boolean rookie;
-    
-    private String cardName;
+    private String brand;
 
     @JsonIgnore
     public boolean isEmpty() {

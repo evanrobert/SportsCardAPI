@@ -49,6 +49,9 @@ public class Controller {
         if (cardUpdate.getYearOfCard() != null) {
             existingCard.setYearOfCard(cardUpdate.getYearOfCard());
         }
+        if(cardUpdate.getBrand() != null){
+            existingCard.setBrand(cardUpdate.getBrand());
+        }
         existingCard.setRookie(cardUpdate.isRookie());
         existingCard.setNumbered(cardUpdate.isNumbered());
 
@@ -76,6 +79,11 @@ public class Controller {
     public ResponseEntity<List<Cards>> findCardByNumbered(@PathVariable("numbered") boolean numbered) {
         List<Cards> numberedCards = usersRepo.findCardByNumbered(numbered);
         return ResponseEntity.status(HttpStatus.OK).body(numberedCards);
+    }
+    @GetMapping("/card/{brand}")
+    public ResponseEntity<List<Cards>> findCardByBrand(@PathVariable("brand")String brand){
+        List<Cards> brandOfCards = usersRepo.findCardByBrand(brand);
+        return ResponseEntity.status(HttpStatus.OK).body(brandOfCards);
     }
 
 
