@@ -52,10 +52,10 @@ public class Controller {
         if (cardUpdate.getYearOfCard() != null) {
             existingCard.setYearOfCard(cardUpdate.getYearOfCard());
         }
+        existingCard.setRookie(cardUpdate.isRookie());
 
-        if (cardUpdate.getRookie() != null) {
-            existingCard.setRookie(cardUpdate.getRookie());
-        }
+
+
 
         usersRepo.save(existingCard);
 
@@ -69,5 +69,11 @@ public class Controller {
         String message = "card deleted successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
+    @GetMapping("/find/by/{rookie}")
+    public ResponseEntity<List<Cards>> findCardByRookie(@PathVariable("rookie") boolean rookie) {
+        List<Cards> rookieCards = usersRepo.findCardByRookie(rookie);
+        return ResponseEntity.status(HttpStatus.OK).body(rookieCards);
+    }
+
 
 }

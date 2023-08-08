@@ -9,10 +9,10 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
-@Entity
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
 public class Cards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Cards {
     private String numbered;
     private double price;
     private String yearOfCard;
-    private String rookie;
+    private boolean rookie;
     
     private String cardName;
 
