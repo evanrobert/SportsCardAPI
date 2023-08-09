@@ -17,8 +17,11 @@ public class Cards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     private String player;
     private boolean numbered;
+
     private double price;
     private String yearOfCard;
     private boolean rookie;
