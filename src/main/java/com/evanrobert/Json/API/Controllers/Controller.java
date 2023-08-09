@@ -32,7 +32,8 @@ public class Controller {
         Optional<Cards> optionalCard = usersRepo.findById(id);
 
         if (optionalCard.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Card not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body
+                    (" The card with an ID of " + id + " could not be found");
         }
 
         Cards existingCard = optionalCard.get();
