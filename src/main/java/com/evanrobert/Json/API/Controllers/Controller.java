@@ -1,5 +1,6 @@
 package com.evanrobert.Json.API.Controllers;
 
+import com.evanrobert.Json.API.Exceptions.NotFoundException;
 import com.evanrobert.Json.API.Model.Cards;
 import com.evanrobert.Json.API.Repos.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,11 @@ public class Controller {
     }
     @PatchMapping("/fix/card/{id}")
     public ResponseEntity<String> fixCard(@PathVariable Long id, @RequestBody Cards cardUpdate) {
+        NotFoundException notFoundException = new NotFoundException();
         Optional<Cards> optionalCard = usersRepo.findById(id);
 
         if (optionalCard.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body
-                    (" The card with an ID of " + id + " could not be found");
+            return notFoundException.notFoundException(id);
         }
 
         Cards existingCard = optionalCard.get();
