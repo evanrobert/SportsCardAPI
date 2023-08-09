@@ -16,6 +16,7 @@ import java.util.Optional;
 public class Controller {
     @Autowired
     UsersRepo usersRepo;
+
     @GetMapping("/get/all/users")
     public List<Cards> getAllUsers() {
         return usersRepo.findAll();
@@ -53,6 +54,9 @@ public class Controller {
         }
         if(cardUpdate.getBrand() != null){
             existingCard.setBrand(cardUpdate.getBrand());
+        }
+        if(cardUpdate.getSport() != null){
+            existingCard.setSport(cardUpdate.getSport());
         }
         existingCard.setRookie(cardUpdate.isRookie());
         existingCard.setNumbered(cardUpdate.isNumbered());
