@@ -2,6 +2,7 @@ package com.evanrobert.Json.API.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +19,9 @@ public class Cards {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private String sport;
     private String player;
     private boolean numbered;
-
     private double price;
     private String yearOfCard;
     private boolean rookie;
