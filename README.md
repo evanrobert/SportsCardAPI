@@ -1,12 +1,35 @@
+<p align="right">
+  <img src="https://cdn-icons-png.flaticon.com/128/3311/3311579.png" alt="Image" width="200" height="200">
+</p>
+
 # Sports Cards API
-## Description 
-Building a small API for users to perform CRUD operations for Sports cards.
-## Why Was this built?
-After looking around for a Sports card 3rd Party API, the only options i could find were ones that were subscription based or pay to use.
-After seeing that i decided to create my own to incorporate into a different project. It is a baseline for any users who want to build a Sports Cards RESTUFL API.
+
+## Description
+This project involves building a small API for users to perform CRUD operations on Sports cards.
+
+## Motivation
+When searching for a third-party API for Sports cards, the available options were either subscription-based or required payment. As a result, I decided to create my own API for use in another project. It serves as a foundation for users who wish to develop their own Sports Cards RESTful API.
+
 ## Features of the Sports Card API
-Some of the options i built are to get cards based off of brand, player prefix, true or false that the card is a rookie, and also if the card is numbered or not.
-Other options include a patch to edit the card based off of entering the ID of the card the user would like to edit. Another option is to post a card 
-based off of the Model information for Cards. The user can also delete a card based off of the ID selected.
+The API offers various functionalities, including:
+- Retrieving cards based on brand
+- Searching for cards by player name prefix
+- Filtering cards based on whether they are rookies (true/false)
+- Identifying numbered cards
+- Updating a card's information using the card's ID
+- Adding new cards by submitting the Card model information
+- Deleting a card based on its ID
+
+This API provides a comprehensive set of operations for managing sports cards.
+
+## Attribution
+Icon made by [Jesus Chavarria](https://www.flaticon.com/authors/jesus-chavarria) from [www.flaticon.com](https://www.flaticon.com) - [Sport icons](https://www.flaticon.com/free-icons/sport)
+
+Your contributions and suggestions are welcome. Feel free to explore and enhance the API!
+
+Please note: It's always a good idea to double-check the code, test thoroughly, and ensure the API's security before deployment.
+
+
+
 
 
