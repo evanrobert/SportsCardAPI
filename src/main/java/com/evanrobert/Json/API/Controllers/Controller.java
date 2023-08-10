@@ -91,12 +91,14 @@ public class Controller {
         List<Cards> brandOfCards = usersRepo.findCardByBrand(brand);
         return ResponseEntity.status(HttpStatus.OK).body(brandOfCards);
     }
-    //Would like to be able to find just by first letter of name Ex: name Bill type b and find bill
+
+
     @GetMapping("/card/player/{player}")
-    public ResponseEntity<List<Cards>> findCardByPlayer(@PathVariable("player")String player){
-        List<Cards> findByPlayer = usersRepo.findCardByPlayer(player);
-        return ResponseEntity.status(HttpStatus.OK).body(findByPlayer);
+    public ResponseEntity<List<Cards>> findCardByPlayer(@PathVariable("player") String player) {
+        List<Cards> findByPlayerName = usersRepo.findByPlayerStartingWith(player);
+        return ResponseEntity.status(HttpStatus.OK).body(findByPlayerName);
     }
+
 
 
 }

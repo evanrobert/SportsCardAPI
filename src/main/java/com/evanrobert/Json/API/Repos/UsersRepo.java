@@ -9,5 +9,12 @@ public interface UsersRepo extends JpaRepository<Cards,Long> {
     List<Cards> findCardByRookie(boolean rookie);
     List<Cards> findCardByNumbered(boolean numbered);
     List<Cards> findCardByBrand(String brand);
-    List<Cards> findCardByPlayer(String player);
+
+    List<Cards> findByPlayerStartingWith(String player);
 }
+
+
+
+
+
+
