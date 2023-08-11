@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,8 +33,17 @@ class ControllerTest {
                     .rookie(false)
                     .brand("Optic")
                     .build();
+        Cards fakeCard2 = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("Optic")
+                .build();
 
-            List<Cards> fakeCardList = Collections.singletonList(fakeCard);
+            List<Cards> fakeCardList = Arrays.asList(fakeCard,fakeCard2);
             when(usersRepo.findAll()).thenReturn(fakeCardList);
 
 
@@ -41,8 +51,9 @@ class ControllerTest {
 
 
             assertNotNull(returnedCards);
-            assertEquals(1, returnedCards.size());
+            assertEquals(2, returnedCards.size());
             assertEquals(fakeCard, returnedCards.get(0));
+        assertEquals(fakeCard2, returnedCards.get(1));
 
 
             verify(usersRepo, times(1)).findAll();
