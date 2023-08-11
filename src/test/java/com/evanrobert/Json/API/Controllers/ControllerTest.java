@@ -73,6 +73,17 @@ class ControllerTest {
 
     @Test
     void deleteById() {
+        Cards fakeCard = Cards.builder()
+                .id(1l)
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("Optic")
+                .build();
+        controller.deleteById(fakeCard.getId());
     }
 
 
