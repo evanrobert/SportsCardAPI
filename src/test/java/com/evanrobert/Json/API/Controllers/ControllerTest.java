@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.util.Assert;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -89,6 +90,28 @@ class ControllerTest {
 
     @Test
     void findCardByRookie() {
+        Cards fakeCard = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("Optic")
+                .build();
+      controller.findCardByRookie(fakeCard.isRookie());
+        Cards fakeCard2 = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(true)
+                .brand("Optic")
+                .build();
+        controller.findCardByRookie(fakeCard.isRookie());
+      Assert.isTrue(!fakeCard.isRookie());
+      Assert.isTrue(fakeCard2.isRookie());
     }
 
     @Test
