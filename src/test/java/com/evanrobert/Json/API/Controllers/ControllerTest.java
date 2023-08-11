@@ -11,8 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -141,10 +141,52 @@ class ControllerTest {
 
     @Test
     void findCardByBrand() {
+        Cards fakeCard = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("Optic")
+                .build();
+        Cards fakeCard2 = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(false)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(true)
+                .brand("optic")
+                .build();
+        Assert.isTrue(!Objects.equals(fakeCard.getBrand(), "prism"));
+        Assert.isTrue(Objects.equals(fakeCard2.getBrand(), "optic"));
+
     }
 
     @Test
     void findCardByPlayer() {
+        Cards fakeCard = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("optic")
+                .build();
+        Cards fakeCard2 = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(false)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(true)
+                .brand("optic")
+                .build();
+        Assert.isTrue(fakeCard.getPlayer().equals("John Doe"));
+        Assert.isTrue(!fakeCard2.getPlayer().equals("Sosa"));
+
 
     }
 }
