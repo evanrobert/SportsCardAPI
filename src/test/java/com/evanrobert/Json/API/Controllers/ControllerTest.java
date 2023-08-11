@@ -116,6 +116,27 @@ class ControllerTest {
 
     @Test
     void findCardByNumbered() {
+        Cards fakeCard = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("Optic")
+                .build();
+        controller.findCardByRookie(fakeCard.isRookie());
+        Cards fakeCard2 = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(false)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(true)
+                .brand("Optic")
+                .build();
+        Assert.isTrue(fakeCard.isNumbered());
+        Assert.isTrue(!fakeCard2.isNumbered());
     }
 
     @Test
