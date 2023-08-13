@@ -101,10 +101,14 @@ public class Controller {
 
 
     @GetMapping("/card/player/{player}")
-    public ResponseEntity<List<Cards>> findCardByPlayer(@PathVariable("player") String player) {
+    public ResponseEntity<?> findCardByPlayer(@PathVariable("player") String player) {
         List<Cards> findByPlayerName = usersRepo.findByPlayerStartingWith(player);
+        if (findByPlayerName.isEmpty()) {
+            String errorMessage = "no player found with name :" + player;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+            //Searches for a card Based off of the prefix of the player.
+        }
         return ResponseEntity.status(HttpStatus.OK).body(findByPlayerName);
-        //Searches for a card Based off of the prefix of the player.
     }
     @GetMapping("/card/year/{yearOfCard}")
     public ResponseEntity<?> findCardByYearOfCard(@PathVariable("yearOfCard") String yearOfCard) {
