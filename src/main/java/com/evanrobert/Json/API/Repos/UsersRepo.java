@@ -15,6 +15,7 @@ public interface UsersRepo extends JpaRepository<Cards,Long> {
 
     List<Cards> findByPlayerStartingWith(String player);
     //Finds player starting with
+    List<Cards> findCardByYearOfCardStartingWith(String yearOfCard);
 }
 
 

@@ -106,6 +106,19 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.OK).body(findByPlayerName);
         //Searches for a card Based off of the prefix of the player.
     }
+    @GetMapping("/card/year/{yearOfCard}")
+    public ResponseEntity<?> findCardByYearOfCard(@PathVariable("yearOfCard") String yearOfCard) {
+        List<Cards> findCardByPlayersYear = usersRepo.findCardByYearOfCardStartingWith(yearOfCard);
+
+        if (findCardByPlayersYear.isEmpty()) {
+            String errorMessage = "No cards found for the year: " + yearOfCard;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(findCardByPlayersYear);
+    }
+
+
 
 
 
