@@ -186,4 +186,27 @@ class ControllerTest {
 
 
     }
+    @Test
+    void findCardByYearOfCard(){
+        Cards fakeCard = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(true)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(false)
+                .brand("optic")
+                .build();
+        Cards fakeCard2 = Cards.builder()
+                .sport("Football")
+                .player("John Doe")
+                .numbered(false)
+                .price(50.0)
+                .yearOfCard("2022")
+                .rookie(true)
+                .brand("optic")
+                .build();
+        Assert.isTrue(fakeCard.getYearOfCard().equals("2022"));
+        Assert.isTrue(!fakeCard2.getYearOfCard().equals("2021"));
+    }
 }
