@@ -95,8 +95,12 @@ public class Controller {
     }
 
     @GetMapping("/card/{brand}")
-    public ResponseEntity<List<Cards>> findCardByBrand(@PathVariable("brand") String brand) {
+    public ResponseEntity<?> findCardByBrand(@PathVariable("brand") String brand) {
         List<Cards> brandOfCards = usersRepo.findCardByBrand(brand);
+        if(brandOfCards.isEmpty()){
+            String errorMessage = "no card with the brand:" + brand;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
         return ResponseEntity.status(HttpStatus.OK).body(brandOfCards);
         // Searches for cards based off the brand of the card
     }
