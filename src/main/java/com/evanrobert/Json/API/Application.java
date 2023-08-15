@@ -16,7 +16,7 @@ public class Application implements ApplicationRunner {
 	CardRepo cardRepo;
 	//Need to rename the userepo to cardRepo.
 	//Additional resources? possibly a third party api to populate card data?
-	
+
 
 
 	public static void main(String[] args) {

@@ -19,8 +19,7 @@ public class Controller {
 
     @GetMapping("/get/all/users")
     public List<Cards> getAllUsers() {
-        return cardRepo.findAll();
-    }
+        return cardRepo.findAll();}
     // This allows you to get all cards that have been posted
 
 
@@ -32,6 +31,10 @@ public class Controller {
     }
 
     //This will allow you to post a card based off of all of the felds in the cards Model.
+    //Example request in Curl
+    // .... "curl -X POST -H "Content-Type: application/json" -d
+    // '{"sport": "Football", "player": "Bobby Wagner", "numbered": true, "price": 500.0, "yearOfCard":
+    // "2014", "rookie": true, "brand": "Topps"}' localhost:8080/add/user"....
     @PatchMapping("/fix/card/{id}")
     public ResponseEntity<String> fixCard(@PathVariable Long id, @RequestBody Cards cardUpdate) {
         NotFoundException notFoundException = new NotFoundException();
