@@ -131,6 +131,15 @@ public class Controller {
 
         return ResponseEntity.status(HttpStatus.OK).body(findCardByPlayersYear);
     }
+    @GetMapping("/card/sport/{sport}")
+    public ResponseEntity<?> findCardsBySport(@PathVariable("sport")String sport){
+        List<Cards> findCardsBySport = cardRepo.findCardBySportStartingWith(sport);
+        if(findCardsBySport.isEmpty()){
+            String errorMessage = "No cards found for the sport: " + sport;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(findCardsBySport);
+    }
 }
     /* This GetMapping is responsible for finding a card by the year of card the user enters.
     If there is no card year recorded, we return a not found status code, as well as a cusrtom error message.
