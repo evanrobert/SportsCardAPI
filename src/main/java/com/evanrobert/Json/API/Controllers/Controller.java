@@ -98,7 +98,7 @@ public class Controller {
     public ResponseEntity<?> findCardByBrand(@PathVariable("brand") String brand) {
         List<Cards> brandOfCards = usersRepo.findCardByBrand(brand);
         if(brandOfCards.isEmpty()){
-            String errorMessage = "no card with the brand:" + brand;
+            String errorMessage = "no card found for  brand:" + "'" +brand +"'";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
         return ResponseEntity.status(HttpStatus.OK).body(brandOfCards);
