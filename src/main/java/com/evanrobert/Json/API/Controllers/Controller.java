@@ -2,7 +2,7 @@ package com.evanrobert.Json.API.Controllers;
 
 import com.evanrobert.Json.API.Exceptions.NotFoundException;
 import com.evanrobert.Json.API.Model.Cards;
-import com.evanrobert.Json.API.Repos.UsersRepo;
+import com.evanrobert.Json.API.Repos.CardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,18 +15,18 @@ import java.util.Optional;
 @RestController
 public class Controller {
     @Autowired
-    UsersRepo usersRepo;
+    CardRepo cardRepo;
 
     @GetMapping("/get/all/users")
     public List<Cards> getAllUsers() {
-        return usersRepo.findAll();
+        return cardRepo.findAll();
     }
     // This allows you to get all cards that have been posted
 
 
     @PostMapping("/add/user")
     public ResponseEntity<String> addNewUser(@RequestBody Cards cards) {
-        usersRepo.save(cards);
+        cardRepo.save(cards);
         String message = "User added successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
@@ -35,7 +35,7 @@ public class Controller {
     @PatchMapping("/fix/card/{id}")
     public ResponseEntity<String> fixCard(@PathVariable Long id, @RequestBody Cards cardUpdate) {
         NotFoundException notFoundException = new NotFoundException();
-        Optional<Cards> optionalCard = usersRepo.findById(id);
+        Optional<Cards> optionalCard = cardRepo.findById(id);
 
         if (optionalCard.isEmpty()) {
             return notFoundException.notFoundException(id);
@@ -65,7 +65,7 @@ public class Controller {
         existingCard.setNumbered(cardUpdate.isNumbered());
 
 
-        usersRepo.save(existingCard);
+        cardRepo.save(existingCard);
 
         String message = "Card changed successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
@@ -74,7 +74,7 @@ public class Controller {
 
     @DeleteMapping("/delete/card/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
-        usersRepo.deleteById(id);
+        cardRepo.deleteById(id);
         String message = "card deleted successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
         // This searches for a card based on ID and will delete the card
@@ -82,21 +82,21 @@ public class Controller {
 
     @GetMapping("/find/by/{rookie}")
     public ResponseEntity<List<Cards>> findCardByRookie(@PathVariable("rookie") boolean rookie) {
-        List<Cards> rookieCards = usersRepo.findCardByRookie(rookie);
+        List<Cards> rookieCards = cardRepo.findCardByRookie(rookie);
         return ResponseEntity.status(HttpStatus.OK).body(rookieCards);
         // Searches for cards based off if the card is a rookie or not, this is a boolean value.
     }
 
     @GetMapping("/numbered/{numbered}")
     public ResponseEntity<List<Cards>> findCardByNumbered(@PathVariable("numbered") boolean numbered) {
-        List<Cards> numberedCards = usersRepo.findCardByNumbered(numbered);
+        List<Cards> numberedCards = cardRepo.findCardByNumbered(numbered);
         return ResponseEntity.status(HttpStatus.OK).body(numberedCards);
         // Searches for cards based off if the card is numbered or not This is a boolean value.
     }
 
     @GetMapping("/card/{brand}")
     public ResponseEntity<?> findCardByBrand(@PathVariable("brand") String brand) {
-        List<Cards> brandOfCards = usersRepo.findCardByBrand(brand);
+        List<Cards> brandOfCards = cardRepo.findCardByBrand(brand);
         if(brandOfCards.isEmpty()){
             String errorMessage = "no card found for  brand:" + "'" +brand +"'";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
@@ -108,7 +108,7 @@ public class Controller {
 
     @GetMapping("/card/player/{player}")
     public ResponseEntity<?> findCardByPlayer(@PathVariable("player") String player) {
-        List<Cards> findByPlayerName = usersRepo.findByPlayerStartingWith(player);
+        List<Cards> findByPlayerName = cardRepo.findByPlayerStartingWith(player);
         if (findByPlayerName.isEmpty()) {
             String errorMessage = "no player found with name :" + player;
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
@@ -119,7 +119,7 @@ public class Controller {
 
     @GetMapping("/card/year/{yearOfCard}")
     public ResponseEntity<?> findCardByYearOfCard(@PathVariable("yearOfCard") String yearOfCard) {
-        List<Cards> findCardByPlayersYear = usersRepo.findCardByYearOfCardStartingWith(yearOfCard);
+        List<Cards> findCardByPlayersYear = cardRepo.findCardByYearOfCardStartingWith(yearOfCard);
 
         if (findCardByPlayersYear.isEmpty()) {
             String errorMessage = "No cards found for the year: " + yearOfCard;

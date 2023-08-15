@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UsersRepo extends JpaRepository<Cards,Long> {
+public interface CardRepo extends JpaRepository<Cards,Long> {
     List<Cards> findCardByRookie(boolean rookie);
     //Finds Card by if rookie
     List<Cards> findCardByNumbered(boolean numbered);
