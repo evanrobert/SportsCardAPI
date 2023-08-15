@@ -1,7 +1,7 @@
 package com.evanrobert.Json.API.Controllers;
 
 import com.evanrobert.Json.API.Model.Cards;
-import com.evanrobert.Json.API.Repos.UsersRepo;
+import com.evanrobert.Json.API.Repos.CardRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class ControllerTest {
     @Mock
-    UsersRepo usersRepo;
+    CardRepo cardRepo;
     @InjectMocks
     private Controller controller;
 
@@ -42,7 +42,7 @@ class ControllerTest {
                 .build();
 
             List<Cards> fakeCardList = Arrays.asList(fakeCard,fakeCard2);
-            when(usersRepo.findAll()).thenReturn(fakeCardList);
+            when(cardRepo.findAll()).thenReturn(fakeCardList);
 
 
             List<Cards> returnedCards = controller.getAllUsers();
@@ -54,7 +54,7 @@ class ControllerTest {
         assertEquals(fakeCard2, returnedCards.get(1));
 
 
-            verify(usersRepo, times(1)).findAll();
+            verify(cardRepo, times(1)).findAll();
         }
 
 
