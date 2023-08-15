@@ -14,6 +14,9 @@ public class Application implements ApplicationRunner {
 
 	@Autowired
 	UsersRepo usersRepo;
+	//Need to rename the userepo to cardRepo.
+	//Additional resources? possibly a third party api to populate card data?
+	// add image url.
 
 
 	public static void main(String[] args) {
@@ -34,6 +37,7 @@ public class Application implements ApplicationRunner {
 			usersRepo.save(newUser);
 			usersRepo.save(newCard2);
 			usersRepo.flush();
+			//Populating two cards if the userRepo is empty.
 		}
 
 	}
