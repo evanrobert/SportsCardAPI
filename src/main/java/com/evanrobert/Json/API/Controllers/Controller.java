@@ -112,7 +112,7 @@ public class Controller {
         if (findByPlayerName.isEmpty()) {
             String errorMessage = "no player found with name :" + player;
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-            //Searches for a card Based off of the prefix of the player.
+            //Searches for a card Based off of the prefix of the player. If there is none will show not found error message.
         }
         return ResponseEntity.status(HttpStatus.OK).body(findByPlayerName);
     }
