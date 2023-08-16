@@ -14,11 +14,11 @@ import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
-class ControllerTest {
+class JsonControllerTest {
     @Mock
     CardRepo cardRepo;
     @InjectMocks
-    private Controller controller;
+    private JsonController jsonController;
 
     @Test
     void getAllUsers() {
@@ -45,7 +45,7 @@ class ControllerTest {
             when(cardRepo.findAll()).thenReturn(fakeCardList);
 
 
-            List<Cards> returnedCards = controller.getAllUsers();
+            List<Cards> returnedCards = jsonController.getAllUsers();
 
 
             assertNotNull(returnedCards);
@@ -81,7 +81,7 @@ class ControllerTest {
                 .rookie(false)
                 .brand("Optic")
                 .build();
-        controller.deleteById(fakeCard.getId());
+        jsonController.deleteById(fakeCard.getId());
     }
 
 
@@ -96,7 +96,7 @@ class ControllerTest {
                 .rookie(false)
                 .brand("Optic")
                 .build();
-      controller.findCardByRookie(fakeCard.isRookie());
+      jsonController.findCardByRookie(fakeCard.isRookie());
         Cards fakeCard2 = Cards.builder()
                 .sport("Football")
                 .player("John Doe")
@@ -106,7 +106,7 @@ class ControllerTest {
                 .rookie(true)
                 .brand("Optic")
                 .build();
-        controller.findCardByRookie(fakeCard.isRookie());
+        jsonController.findCardByRookie(fakeCard.isRookie());
       Assert.isTrue(!fakeCard.isRookie());
       Assert.isTrue(fakeCard2.isRookie());
     }
@@ -122,7 +122,7 @@ class ControllerTest {
                 .rookie(false)
                 .brand("Optic")
                 .build();
-        controller.findCardByRookie(fakeCard.isRookie());
+        jsonController.findCardByRookie(fakeCard.isRookie());
         Cards fakeCard2 = Cards.builder()
                 .sport("Football")
                 .player("John Doe")
