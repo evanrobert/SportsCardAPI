@@ -13,7 +13,7 @@ import java.util.Optional;
 
 
 @RestController
-public class Controller {
+public class JsonController {
     @Autowired
     CardRepo cardRepo;
 
