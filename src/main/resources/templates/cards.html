@@ -12,11 +12,32 @@
             color: #333;
         }
 
+
         .header {
             background-color: #222;
             color: #fff;
             padding: 20px;
             text-align: center;
+        }
+      .homepage-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+
+            .homepage-link a {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px 10px;
+            background-color: #333;
+        }
+
+        .homepage-link a:hover {
+            background-color: #555;
         }
 
         .container {
@@ -42,13 +63,57 @@
         th {
             background-color: #f2f2f2;
         }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
 <div class="header">
-    <h1>All Cards</h1>
+    <h1>SportsCards API</h1>
+    <div class="homepage-link">
+        <a href="/">Homepage</a>
+    </div>
 </div>
 <div class="container">
+    <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}">
+        <label for="sport">Select a Sport:</label>
+        <input type="text" id="sport" name="sport" placeholder="Enter a sport name">
+        <button type="submit">Search</button>
+    </form>
+
+    <form method="get" th:action="@{/get/card/yearOfCard}">
+        <label for="yearOfCard">Enter Year of Card:</label>
+        <input type="text" id="yearOfCard" name="yearOfCard" placeholder="Enter year of card">
+        <button type="submit">Search</button>
+    </form>
+
     <table>
         <thead>
         <tr>
