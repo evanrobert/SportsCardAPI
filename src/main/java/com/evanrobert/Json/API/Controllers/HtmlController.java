@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.util.Collections;
@@ -36,6 +37,17 @@ public class HtmlController {
         List<Cards> cards = cardRepo.findCardByYearOfCardStartingWith(yearOfCard);
         model.addAttribute("cards", cards);
         return "cards";
+    }
+    @GetMapping("/get/card/by/brand")
+    public String getCardByBrand(@RequestParam("brand")String brand, Model model, RedirectAttributes redirectAttributes){
+        List<Cards> cards = cardRepo.findCardByBrand(brand);
+        if(cards.isEmpty()){
+            redirectAttributes.addAttribute("error","no card by this brand");
+
+        }
+        model.addAttribute("cards",cards);
+        return "cards";
+
     }
 
 }
