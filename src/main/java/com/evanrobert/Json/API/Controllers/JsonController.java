@@ -30,11 +30,12 @@ public class JsonController {
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
-    //This will allow you to post a card based off of all of the felds in the cards Model.
-    //Example request in Curl
-    // .... "curl -X POST -H "Content-Type: application/json" -d
-    // '{"sport": "Football", "player": "Bobby Wagner", "numbered": true, "price": 500.0, "yearOfCard":
-    // "2014", "rookie": true, "brand": "Topps"}' localhost:8080/add/user"....
+    /**This will allow you to post a card based off of all of the felds in the cards Model.
+    * Example request in Curl
+    * "curl -X POST -H "Content-Type: application/json" -d
+     * *'{"sport": "Football", "player": "Bobby Wagner", "numbered": true, "price": 500.0, "yearOfCard":
+     *"2014", "rookie": true, "brand": "Topps"}' localhost:8080/add/user"....
+     **/
     @PatchMapping("/fix/card/{id}")
     public ResponseEntity<String> fixCard(@PathVariable Long id, @RequestBody Cards cardUpdate) {
         NotFoundException notFoundException = new NotFoundException();
@@ -73,7 +74,8 @@ public class JsonController {
         String message = "Card changed successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
-    //This searches for a card based off of an ID, when found it will allow you to modify all fields
+    /** This searches for a card based off of an ID, when found it will allow you to modify all fields
+     * **/
 
     @DeleteMapping("/delete/card/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
