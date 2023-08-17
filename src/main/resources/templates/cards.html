@@ -117,6 +117,7 @@
 <div class="container">
     <button onclick="showSearchForm('searchBySportForm')">Select by Sport</button>
     <button onclick="showSearchForm('searchByYearForm')">Select by Year</button>
+    <button onclick="showSearchForm('searchByBrandForm')">Select by Brand</button>
 
     <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}" class="search-form" id="searchBySportForm">
         <label for="sport">Select a Sport:</label>
@@ -127,6 +128,12 @@
     <form method="get" th:action="@{/get/card/yearOfCard}" class="search-form" id="searchByYearForm">
         <label for="yearOfCard">Enter Year of Card:</label>
         <input type="text" id="yearOfCard" name="yearOfCard" placeholder="Enter year of card">
+        <button type="submit">Search</button>
+    </form>
+
+    <form method="get" th:action="@{/get/card/by/brand}" class="search-form" id="searchByBrandForm">
+        <label for="brand">Enter Card Brand:</label>
+        <input type="text" id="brand" name="brand" placeholder="Enter card brand">
         <button type="submit">Search</button>
     </form>
 
