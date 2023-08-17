@@ -20,8 +20,9 @@ public class JsonController {
     @GetMapping("/get/all/users")
     public List<Cards> getAllUsers() {
         return cardRepo.findAll();}
-    // This allows you to get all cards that have been posted
-
+    /**
+     * This allows you to get all cards that have been posted
+    */
 
     @PostMapping("/add/user")
     public ResponseEntity<String> addNewUser(@RequestBody Cards cards) {
@@ -30,7 +31,7 @@ public class JsonController {
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
-    /**This will allow you to post a card based off of all of the felds in the cards Model.
+    /**This will allow you to post a card based off  all  fields in the cards Model.
     * Example request in Curl
     * "curl -X POST -H "Content-Type: application/json" -d
      * *'{"sport": "Football", "player": "Bobby Wagner", "numbered": true, "price": 500.0, "yearOfCard":
@@ -74,29 +75,39 @@ public class JsonController {
         String message = "Card changed successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
-    /** This searches for a card based off of an ID, when found it will allow you to modify all fields
-     * **/
+    /**
+     * This searches for a card based off of an ID, when found it will allow you to modify all fields
+      **/
 
     @DeleteMapping("/delete/card/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
         cardRepo.deleteById(id);
         String message = "card deleted successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);
-        // This searches for a card based on ID and will delete the card
+        /**
+         * This searches for a card based on ID and will delete the card
+        **/
+
     }
 
     @GetMapping("/find/by/{rookie}")
     public ResponseEntity<List<Cards>> findCardByRookie(@PathVariable("rookie") boolean rookie) {
         List<Cards> rookieCards = cardRepo.findCardByRookie(rookie);
         return ResponseEntity.status(HttpStatus.OK).body(rookieCards);
-        // Searches for cards based off if the card is a rookie or not, this is a boolean value.
+        /**
+          * Searches for cards based off if the card is a rookie or not, this is a boolean value.
+
+         */
     }
 
     @GetMapping("/numbered/{numbered}")
     public ResponseEntity<List<Cards>> findCardByNumbered(@PathVariable("numbered") boolean numbered) {
         List<Cards> numberedCards = cardRepo.findCardByNumbered(numbered);
         return ResponseEntity.status(HttpStatus.OK).body(numberedCards);
-        // Searches for cards based off if the card is numbered or not This is a boolean value.
+        /**
+         * Searches for cards based off if the card is numbered or not This is a boolean value.
+
+         */
     }
 
     @GetMapping("/card/{brand}")
@@ -107,7 +118,9 @@ public class JsonController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
         return ResponseEntity.status(HttpStatus.OK).body(brandOfCards);
-        // Searches for cards based off the brand of the card
+        /**
+         * Searches for cards based off the brand of the card
+         */
     }
 
 
@@ -117,7 +130,9 @@ public class JsonController {
         if (findByPlayerName.isEmpty()) {
             String errorMessage = "no player found with name :" + player;
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-            //Searches for a card Based off of the prefix of the player. If there is none will show not found error message.
+            /**
+             * Searches for a card Based off of the prefix of the player. If there is none will show not found error message.
+             */
         }
         return ResponseEntity.status(HttpStatus.OK).body(findByPlayerName);
     }
@@ -143,9 +158,11 @@ public class JsonController {
         return ResponseEntity.status(HttpStatus.OK).body(findCardsBySport);
     }
 }
-    /* This GetMapping is responsible for finding a card by the year of card the user enters.
-    If there is no card year recorded, we return a not found status code, as well as a cusrtom error message.
-     If it is found we return all the cards corresponding to that year.*/
+    /**
+     * This GetMapping is responsible for finding a card by the year of card the user enters.
+     * If there is no card year recorded, we return a not found status code, as well as a cusrtom error message.
+     If it is found we return all the cards corresponding to that year.
+     */
 
 
 
