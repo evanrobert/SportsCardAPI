@@ -12,22 +12,22 @@
             color: #333;
         }
 
-
         .header {
             background-color: #222;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
-      .homepage-link {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    text-align: center;
-    transform: translate(-50%, 0);
-}
 
-            .homepage-link a {
+        .homepage-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-align: center;
+            transform: translate(-50%, 0);
+        }
+
+        .homepage-link a {
             color: white;
             text-decoration: none;
             border: 1px solid #ddd;
@@ -73,6 +73,10 @@
             margin-bottom: 5px;
         }
 
+        .search-form {
+            display: none;
+        }
+
         input[type="text"], input[type="checkbox"] {
             width: 100%;
             padding: 8px;
@@ -93,6 +97,15 @@
             background-color: #555;
         }
     </style>
+    <script>
+        function showSearchForm(formId) {
+            var forms = document.getElementsByClassName("search-form");
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = "none";
+            }
+            document.getElementById(formId).style.display = "block";
+        }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -102,13 +115,16 @@
     </div>
 </div>
 <div class="container">
-    <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}">
+    <button onclick="showSearchForm('searchBySportForm')">Select by Sport</button>
+    <button onclick="showSearchForm('searchByYearForm')">Select by Year</button>
+
+    <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}" class="search-form" id="searchBySportForm">
         <label for="sport">Select a Sport:</label>
         <input type="text" id="sport" name="sport" placeholder="Enter a sport name">
         <button type="submit">Search</button>
     </form>
 
-    <form method="get" th:action="@{/get/card/yearOfCard}">
+    <form method="get" th:action="@{/get/card/yearOfCard}" class="search-form" id="searchByYearForm">
         <label for="yearOfCard">Enter Year of Card:</label>
         <input type="text" id="yearOfCard" name="yearOfCard" placeholder="Enter year of card">
         <button type="submit">Search</button>
