@@ -52,11 +52,22 @@ public class HtmlController {
     public String getCardByIsNumbered(@RequestParam("numbered") boolean numbered, Model model, RedirectAttributes redirectAttributes) {
         List<Cards> cards = cardRepo.findCardByNumbered(numbered);
         if (cards.isEmpty()) {
-            redirectAttributes.addAttribute("error", "no card by this brand");
+            redirectAttributes.addAttribute("error", "no numbered cards found");
         }
         model.addAttribute("cards", cards);
         return "cards";
 
+    }
+
+    @GetMapping("/get/card/by/rookie")
+    public String getCardByIsRookie(@RequestParam("rookie") boolean rookie, Model model, RedirectAttributes redirectAttributes) {
+        List<Cards> cards = cardRepo.findCardByRookie(rookie);
+        if (cards.isEmpty()) {
+            redirectAttributes.addAttribute("error", "No rookies found");
+
+        }
+        model.addAttribute("cards", cards);
+        return "cards";
     }
 }
 
