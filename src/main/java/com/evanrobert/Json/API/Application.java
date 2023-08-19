@@ -15,7 +15,7 @@ public class Application implements ApplicationRunner {
 	@Autowired
 	CardRepo cardRepo;
 	//Need to rename the userepo to cardRepo.
-	//Additional resources? possibly a third party api to populate card data?
+	// All Mappers need to work in toggle option
 
 
 
