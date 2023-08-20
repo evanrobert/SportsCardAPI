@@ -120,6 +120,7 @@
     <button onclick="showSearchForm('searchByBrandForm')">Select by Brand</button>
     <button onclick="showSearchForm('searchByNumberedForm')">Select by numbered</button>
     <button onclick="showSearchForm('searchByRookieForm')">Select by Rookie</button>
+    <button onclick="showSearchForm('searchByPriceForm')">Select by Price</button>
 
     <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}" class="search-form" id="searchBySportForm">
         <label for="sport">Select a Sport:</label>
@@ -148,6 +149,21 @@
         <input type="checkbox" id="rookie" name="rookie" th:checked="${rookie}">
         <button type="submit">Search</button>
     </form>
+    <form method="get" th:action="@{/get/card/by/price}" class="search-form" id="searchByPriceForm">
+        <label for="price">Enter a Price:</label>
+        <input type="text" id="price" name="price" placeholder="Enter a price">
+
+        <label>
+            <input type="checkbox" name="comparison" value="greaterThan"> Greater Than
+        </label>
+        <label>
+            <input type="checkbox" name="comparison" value="lessThan"> Less Than
+        </label>
+
+        <button type="submit">Search</button>
+    </form>
+
+
 
 
 
