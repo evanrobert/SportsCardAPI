@@ -17,6 +17,9 @@ public interface CardRepo extends JpaRepository<Cards,Long> {
     //Finds player starting with
     List<Cards> findCardByYearOfCardStartingWith(String yearOfCard);
     List<Cards> findCardBySportStartingWith(String sport);
+    List<Cards> findCardsByPriceLessThan(double price);
+
+    List<Cards> findCardsByPriceGreaterThan(double price);
 }
 
 

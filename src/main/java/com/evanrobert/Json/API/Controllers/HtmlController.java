@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -69,6 +71,29 @@ public class HtmlController {
         model.addAttribute("cards", cards);
         return "cards";
     }
+
+    @GetMapping("/get/card/by/price")
+    public String getCardByPrice(@RequestParam("price") double price, @RequestParam("comparison") String comparison,
+                                 Model model, RedirectAttributes redirectAttributes) {
+        List<Cards> cards = new ArrayList<>();
+
+        if (comparison.equals("greaterThan")) {
+            cards = cardRepo.findCardsByPriceGreaterThan(price);
+        } else if (comparison.equals("lessThan")) {
+            cards = cardRepo.findCardsByPriceLessThan(price);
+        }
+
+        if (cards.isEmpty()) {
+            redirectAttributes.addAttribute("error", "No cards found for the given price.");
+        }
+
+        model.addAttribute("cards", cards);
+        return "cards";
+    }
+
 }
+
+
+
 
 
