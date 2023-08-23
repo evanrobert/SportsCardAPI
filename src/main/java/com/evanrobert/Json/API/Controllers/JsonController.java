@@ -6,8 +6,10 @@ import com.evanrobert.Json.API.Repos.CardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +26,13 @@ public class JsonController {
      * This allows you to get all cards that have been posted
     */
 
+    //Need to figure out why the error message is never being hit
     @PostMapping("/add/user")
-    public ResponseEntity<String> addNewUser(@RequestBody Cards cards) {
+    public ResponseEntity<String> addNewUser(@Valid @RequestBody Cards cards) {
+        if(cards.isEmpty()){
+        String errorMessage = "no player found with name :";
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
         cardRepo.save(cards);
         String message = "User added successfully!";
         return ResponseEntity.status(HttpStatus.OK).body(message);

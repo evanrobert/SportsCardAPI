@@ -29,10 +29,10 @@ public class Application implements ApplicationRunner {
 
 		if (cardRepo.count()==0) {
 			Cards newUser = cards.builder()
-					.player("bill russell").sport("Basketball").price(5000).rookie(false).numbered(true)
+					.player("bill russell").sport("Basketball").price(500.00).rookie(false).numbered(true)
 					.yearOfCard("1965").brand("Fleer")
 					.build();
-			Cards newCard2 = Cards.builder().player("Michael Jordan").sport("Basketball").price(50).yearOfCard("2000").numbered(false).rookie(false).brand("Fleer").build();
+			Cards newCard2 = Cards.builder().player("Michael Jordan").sport("Basketball").price(50.00).yearOfCard("2000").numbered(false).rookie(false).brand("Fleer").build();
 
 			cardRepo.save(newUser);
 			cardRepo.save(newCard2);
