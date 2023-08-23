@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +40,7 @@ class HtmlControllerTest {
         MockitoAnnotations.openMocks(this);
 
 
-            List<Cards> fakeCardsList = new ArrayList<>();
+        List<Cards> fakeCardsList = new ArrayList<>();
             fakeCardsList.add(new Cards());
             fakeCardsList.add(new Cards());
 
@@ -130,6 +128,21 @@ class HtmlControllerTest {
 
     @Test
     void getCardByIsNumbered() {
+        boolean numbered = true;
+        List<Cards> fakeCardsList = new ArrayList<>();
+        fakeCardsList.add(new Cards());
+        fakeCardsList.add(new Cards());
+
+        when(cardRepo.findCardByNumbered(numbered)).thenReturn(fakeCardsList);
+        Model model = mock(Model.class);
+        RedirectAttributesModelMap redirectAttributes = new RedirectAttributesModelMap();
+
+        String viewName = htmlController.getCardByIsNumbered(numbered, model, redirectAttributes);
+        verify(cardRepo, times(1)).findCardByNumbered(numbered);
+        verify(model, times(1)).addAttribute("cards", fakeCardsList);
+        Assertions.assertEquals("cards", viewName);
+
+
     }
 
     @Test
