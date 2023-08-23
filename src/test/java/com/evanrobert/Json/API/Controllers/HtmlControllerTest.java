@@ -164,5 +164,15 @@ class HtmlControllerTest {
 
     @Test
     void getCardByPrice() {
+//        double price = 50.00;
+//        List<Cards> fakeCardsList = new ArrayList<>();
+//        fakeCardsList.add(new Cards());
+//        fakeCardsList.add(new Cards());
+//
+//        when(cardRepo.findCardsByPriceGreaterThan(price)).thenReturn(fakeCardsList);
+//        Model model = mock(Model.class);
+//        RedirectAttributesModelMap redirectAttributes = new RedirectAttributesModelMap();
+//        String viewName = htmlController.getCardByPrice()
+
     }
 }
