@@ -179,7 +179,7 @@ class HtmlControllerTest {
         String comparison = "greaterThan";
         String viewName = htmlController.getCardByPrice(price, comparison, model, redirectAttributes);
 
-        
+
         verify(cardRepo, times(1)).findCardsByPriceGreaterThan(price);
         assertEquals("cards", viewName);
     }
