@@ -147,6 +147,19 @@ class HtmlControllerTest {
 
     @Test
     void getCardByIsRookie() {
+        boolean rookie = true;
+        List<Cards> fakeCardsList = new ArrayList<>();
+        fakeCardsList.add(new Cards());
+        fakeCardsList.add(new Cards());
+        when(cardRepo.findCardByRookie(rookie)).thenReturn(fakeCardsList);
+        Model model = mock(Model.class);
+        RedirectAttributesModelMap redirectAttributes = new RedirectAttributesModelMap();
+        String viewName = htmlController.getCardByIsRookie(rookie,model,redirectAttributes);
+        verify(cardRepo, times(1)).findCardByRookie(rookie);
+        verify(model, times(1)).addAttribute("cards", fakeCardsList);
+        Assertions.assertEquals("cards", viewName);
+
+
     }
 
     @Test
