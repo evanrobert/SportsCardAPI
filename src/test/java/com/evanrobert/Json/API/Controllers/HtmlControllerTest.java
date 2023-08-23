@@ -14,14 +14,14 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -41,7 +41,7 @@ class HtmlControllerTest {
     void getAllCards(){
         MockitoAnnotations.openMocks(this);
 
-        
+
             List<Cards> fakeCardsList = new ArrayList<>();
             fakeCardsList.add(new Cards());
             fakeCardsList.add(new Cards());
@@ -50,7 +50,7 @@ class HtmlControllerTest {
             when(cardRepo.findAll()).thenReturn(fakeCardsList);
 
 
-            Model model = Mockito.mock(Model.class);
+            Model model = mock(Model.class);
 
 
             String viewName = htmlController.getAllCards(model);
@@ -59,22 +59,73 @@ class HtmlControllerTest {
             Assertions.assertEquals("cards", viewName);
 
 
-            Mockito.verify(cardRepo, Mockito.times(1)).findAll();
+            verify(cardRepo, Mockito.times(1)).findAll();
 
 
-            Mockito.verify(model, Mockito.times(1)).addAttribute("cards", fakeCardsList);
+            verify(model, Mockito.times(1)).addAttribute("cards", fakeCardsList);
         }
 
     @Test
     void getCardsBySport() {
+        String sport = "Football";
+        List<Cards> fakeCardsList = new ArrayList<>();
+        fakeCardsList.add(new Cards());
+        fakeCardsList.add(new Cards());
+
+        when(cardRepo.findCardBySportStartingWith(sport)).thenReturn(fakeCardsList);
+
+        Model model = mock(Model.class);
+
+        String viewName = htmlController.getCardsBySport(sport, model);
+
+        verify(cardRepo, times(1)).findCardBySportStartingWith(sport);
+        verify(model, times(1)).addAttribute("cards", fakeCardsList);
+
+        Assertions.assertEquals("cards", viewName);
+
     }
+
+
 
     @Test
     void getByYearOfCard() {
+        String yearOfCard = "2022";
+        List<Cards> fakeCardsList = new ArrayList<>();
+        fakeCardsList.add(new Cards());
+        fakeCardsList.add(new Cards());
+
+        when(cardRepo.findCardByYearOfCardStartingWith(yearOfCard)).thenReturn(fakeCardsList);
+
+        Model model = mock(Model.class);
+
+        String viewName = htmlController.getByYearOfCard(yearOfCard, model);
+
+        verify(cardRepo, times(1)).findCardByYearOfCardStartingWith(yearOfCard);
+        verify(model, times(1)).addAttribute("cards", fakeCardsList);
+
+        Assertions.assertEquals("cards", viewName);
+
     }
 
     @Test
     void getCardByBrand() {
+        String brand = "Optic";
+        List<Cards> fakeCardsList = new ArrayList<>();
+        fakeCardsList.add(new Cards());
+        fakeCardsList.add(new Cards());
+
+        when(cardRepo.findCardByBrand(brand)).thenReturn(fakeCardsList);
+
+        Model model = mock(Model.class);
+        RedirectAttributesModelMap redirectAttributes = new RedirectAttributesModelMap();
+
+        String viewName = htmlController.getCardByBrand(brand, model, redirectAttributes);
+
+        verify(cardRepo, times(1)).findCardByBrand(brand);
+        verify(model, times(1)).addAttribute("cards", fakeCardsList);
+
+        Assertions.assertEquals("cards", viewName);
+
     }
 
     @Test
