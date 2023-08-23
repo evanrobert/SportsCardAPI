@@ -109,18 +109,18 @@
 </head>
 <body>
 <div class="header">
-    <h1>SportsCards API</h1>
+    <h1>Evans SportsCards API</h1>
     <div class="homepage-link">
         <a href="/">Homepage</a>
     </div>
 </div>
 <div class="container">
-    <button onclick="showSearchForm('searchBySportForm')">Select by Sport</button>
-    <button onclick="showSearchForm('searchByYearForm')">Select by Year</button>
-    <button onclick="showSearchForm('searchByBrandForm')">Select by Brand</button>
-    <button onclick="showSearchForm('searchByNumberedForm')">Select by numbered</button>
-    <button onclick="showSearchForm('searchByRookieForm')">Select by Rookie</button>
-    <button onclick="showSearchForm('searchByPriceForm')">Select by Price</button>
+    <button onclick="showSearchForm('searchBySportForm')">Select card by Sport</button>
+    <button onclick="showSearchForm('searchByYearForm')">Select card by Year</button>
+    <button onclick="showSearchForm('searchByBrandForm')">Select card by Brand</button>
+    <button onclick="showSearchForm('searchByNumberedForm')">Select card by numbered</button>
+    <button onclick="showSearchForm('searchByRookieForm')">Select card by Rookie</button>
+    <button onclick="showSearchForm('searchByPriceForm')">Select card by Price</button>
 
     <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}" class="search-form" id="searchBySportForm">
         <label for="sport">Select a Sport:</label>
