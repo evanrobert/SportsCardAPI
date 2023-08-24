@@ -39,13 +39,12 @@ public class JsonController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
         }
     }
-
-
     /**This will allow you to post a card based off  all  fields in the cards Model.
     * Example request in Curl
     * "curl -X POST -H "Content-Type: application/json" -d
      * *'{"sport": "Football", "player": "Bobby Wagner", "numbered": true, "price": 500.0, "yearOfCard":
      *"2014", "rookie": true, "brand": "Topps"}' localhost:8080/add/user"....
+     * Try catch to handle invalid card submissions with custom error message. 
      **/
     @PatchMapping("/fix/card/{id}")
     public ResponseEntity<String> fixCard(@PathVariable Long id, @RequestBody Cards cardUpdate) {
