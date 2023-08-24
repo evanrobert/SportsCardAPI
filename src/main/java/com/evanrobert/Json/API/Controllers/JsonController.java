@@ -6,10 +6,8 @@ import com.evanrobert.Json.API.Repos.CardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +42,7 @@ public class JsonController {
     * "curl -X POST -H "Content-Type: application/json" -d
      * *'{"sport": "Football", "player": "Bobby Wagner", "numbered": true, "price": 500.0, "yearOfCard":
      *"2014", "rookie": true, "brand": "Topps"}' localhost:8080/add/user"....
-     * Try catch to handle invalid card submissions with custom error message. 
+     * Try catch to handle invalid card submissions with custom error message.
      **/
     @PatchMapping("/fix/card/{id}")
     public ResponseEntity<String> fixCard(@PathVariable Long id, @RequestBody Cards cardUpdate) {
@@ -145,6 +143,11 @@ public class JsonController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(findByPlayerName);
     }
+    /**
+     * This GetMapping is responsible for finding a card by the year of card the user enters.
+     * If there is no card year recorded, we return a not found status code, as well as a cusrtom error message.
+     If it is found we return all the cards corresponding to that year.
+     */
 
     @GetMapping("/card/year/{yearOfCard}")
     public ResponseEntity<?> findCardByYearOfCard(@PathVariable("yearOfCard") String yearOfCard) {
@@ -157,6 +160,11 @@ public class JsonController {
 
         return ResponseEntity.status(HttpStatus.OK).body(findCardByPlayersYear);
     }
+
+    /** this method is responsible for finding a card based off of the players sport, if
+     *     it's not found it will return a custom error message.
+     */
+
     @GetMapping("/card/sport/{sport}")
     public ResponseEntity<?> findCardsBySport(@PathVariable("sport")String sport){
         List<Cards> findCardsBySport = cardRepo.findCardBySportStartingWith(sport);
@@ -167,11 +175,7 @@ public class JsonController {
         return ResponseEntity.status(HttpStatus.OK).body(findCardsBySport);
     }
 }
-    /**
-     * This GetMapping is responsible for finding a card by the year of card the user enters.
-     * If there is no card year recorded, we return a not found status code, as well as a cusrtom error message.
-     If it is found we return all the cards corresponding to that year.
-     */
+
 
 
 
