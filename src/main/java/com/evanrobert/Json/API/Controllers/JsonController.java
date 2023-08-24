@@ -23,8 +23,6 @@ public class JsonController {
     /**
      * This allows you to get all cards that have been posted
     */
-
-    //Need to figure out why the error message is never being hit
     @PostMapping("/add/user")
     public ResponseEntity<String> addNewUser(@RequestBody Cards cards) {
         try {
