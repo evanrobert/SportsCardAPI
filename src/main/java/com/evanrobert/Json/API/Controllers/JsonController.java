@@ -28,15 +28,18 @@ public class JsonController {
 
     //Need to figure out why the error message is never being hit
     @PostMapping("/add/user")
-    public ResponseEntity<String> addNewUser(@Valid @RequestBody Cards cards) {
-        if(cards.isEmpty()){
-        String errorMessage = "no player found with name :";
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+    public ResponseEntity<String> addNewUser(@RequestBody Cards cards) {
+        try {
+            cardRepo.save(cards);
+            String message = "card " + cards.getId() + " was saved successfully!";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+
+        } catch (Exception e) {
+            String message = "card was not saved please check all fields and try again";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
         }
-        cardRepo.save(cards);
-        String message = "User added successfully!";
-        return ResponseEntity.status(HttpStatus.OK).body(message);
     }
+
 
     /**This will allow you to post a card based off  all  fields in the cards Model.
     * Example request in Curl
