@@ -62,10 +62,10 @@ public class HtmlController {
     }
 
     @GetMapping("/get/card/by/rookie")
-    public String getCardByIsRookie(@RequestParam("rookie") boolean rookie, Model model, RedirectAttributes redirectAttributes) {
+    public String getCardByIsRookie(@RequestParam("rookie") boolean rookie, Model model) {
         List<Cards> cards = cardRepo.findCardByRookie(rookie);
         if (cards.isEmpty()) {
-            redirectAttributes.addAttribute("error", "No rookies found");
+      model.addAttribute("error", "No rookies found");
 
         }
         model.addAttribute("cards", cards);
