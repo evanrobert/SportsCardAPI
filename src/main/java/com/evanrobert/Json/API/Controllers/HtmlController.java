@@ -62,15 +62,20 @@ public class HtmlController {
     }
 
     @GetMapping("/get/card/by/rookie")
-    public String getCardByIsRookie(@RequestParam("rookie") boolean rookie, Model model) {
-        List<Cards> cards = cardRepo.findCardByRookie(rookie);
-        if (cards.isEmpty()) {
-      model.addAttribute("error", "No rookies found");
-
+    public String getCardByIsRookie(@RequestParam(value = "rookie", required = false) Boolean rookie, RedirectAttributes redirectAttributes) {
+        if (rookie == null) {
+            redirectAttributes.addFlashAttribute("error", "Please select whether the card is a rookie.");
+            return "redirect:/"; // Redirect to a relevant URL
         }
-        model.addAttribute("cards", cards);
-        return "cards";
+
+        List<Cards> cards = cardRepo.findCardByRookie(rookie);
+        redirectAttributes.addFlashAttribute("cards", cards);
+        return "redirect:/cards"; // Redirect to the URL displaying cards
     }
+
+
+
+
 
     @GetMapping("/get/card/by/price")
     public String getCardByPrice(@RequestParam("price") double price, @RequestParam("comparison") String comparison,
