@@ -154,8 +154,7 @@ class HtmlControllerTest {
         fakeCardsList.add(new Cards());
         when(cardRepo.findCardByRookie(rookie)).thenReturn(fakeCardsList);
         Model model = mock(Model.class);
-        RedirectAttributesModelMap redirectAttributes = new RedirectAttributesModelMap();
-        String viewName = htmlController.getCardByIsRookie(rookie, model, redirectAttributes);
+        String viewName = htmlController.getCardByIsRookie(rookie, model);
         verify(cardRepo, times(1)).findCardByRookie(rookie);
         verify(model, times(1)).addAttribute("cards", fakeCardsList);
         assertEquals("cards", viewName);
