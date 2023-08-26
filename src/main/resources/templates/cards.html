@@ -97,6 +97,10 @@
         button[type="submit"]:hover {
             background-color: #555;
         }
+        .error-message {
+            color: red;
+            font-size: 20px;
+        }
     </style>
     <script>
         function showSearchForm(formId) {
@@ -162,6 +166,8 @@
         </label>
 
         <button type="submit">Search</button>
+        <div class="error-message" th:if="${error}" th:text="${error}"></div>
+
     </form>
 
 
