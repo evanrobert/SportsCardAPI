@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create a Card</title>
+</head>
+<body>
+<h1>Create a New Card</h1>
+<form action="/create/card" method="post" th:object="${cards}">
+    <label for="sport">Sport:</label>
+    <input type="text" id="sport" name="sport" th:field="*{sport}" required><br><br>
+
+    <label for="player">Player:</label>
+    <input type="text" id="player" name="player" th:field="*{player}" required><br><br>
+
+    <label for="numbered">Numbered:</label>
+    <input type="checkbox" id="numbered" name="numbered" th:field="*{numbered}"><br><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" th:field="*{price}" required><br><br>
+
+    <label for="yearOfCard">Year of Card:</label>
+    <input type="text" id="yearOfCard" name="yearOfCard" th:field="*{yearOfCard}" required><br><br>
+
+    <label for="rookie">Rookie:</label>
+    <input type="checkbox" id="rookie" name="rookie" th:field="*{rookie}"><br><br>
+
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" name="brand" th:field="*{brand}" required><br><br>
+
+    <button type="submit">Create Card</button>
+</form>
+</body>
+</html>
