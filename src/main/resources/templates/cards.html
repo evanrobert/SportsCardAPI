@@ -12,34 +12,49 @@
             color: #333;
         }
 
-        .header {
-        font-family: Impact, fantasy;
-            background-color: #222;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+       .header {
+    font-family: Impact, fantasy;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Add this to the header */
+}
 
-        .homepage-link {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            text-align: center;
-            transform: translate(-50%, 0);
-        }
+.header-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex; /* Align buttons horizontally */
+    gap: 10px; /* Add some spacing between buttons */
+}
 
-        .homepage-link a {
-            color: white;
-            text-decoration: none;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px 10px;
-            background-color: #333;
-        }
+.create a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #333;
+}
 
-        .homepage-link a:hover {
-            background-color: #555;
-        }
+.create a:hover {
+    background-color: #555;
+}
+
+.homepage-link a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #333;
+}
+
+.homepage-link a:hover {
+    background-color: #555;
+}
+
 
         .container {
             max-width: 960px;
@@ -115,10 +130,16 @@
 <body>
 <div class="header">
     <h1>Evans SportsCards API</h1>
-    <div class="homepage-link">
-        <a href="/">Homepage</a>
+    <div class="header-buttons">
+        <div class="homepage-link">
+            <a href="/">Homepage</a>
+        </div>
+        <div class="create">
+            <a href="/create">Add card</a>
+        </div>
     </div>
 </div>
+
 <div class="container">
     <button onclick="showSearchForm('searchBySportForm')">Select card by Sport</button>
     <button onclick="showSearchForm('searchByYearForm')">Select card by Year</button>
