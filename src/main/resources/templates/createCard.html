@@ -2,31 +2,101 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Create a Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #9ba6a5;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid black;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #aeccc6;
+        }
+    </style>
 </head>
 <body>
 <h1>Create a New Card</h1>
 <form action="/create/card" method="post" th:object="${cards}">
-    <label for="sport">Sport:</label>
-    <input type="text" id="sport" name="sport" th:field="*{sport}" required><br><br>
-
-    <label for="player">Player:</label>
-    <input type="text" id="player" name="player" th:field="*{player}" required><br><br>
-
-    <label for="numbered">Numbered:</label>
-    <input type="checkbox" id="numbered" name="numbered" th:field="*{numbered}"><br><br>
-
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" th:field="*{price}" required><br><br>
-
-    <label for="yearOfCard">Year of Card:</label>
-    <input type="text" id="yearOfCard" name="yearOfCard" th:field="*{yearOfCard}" required><br><br>
-
-    <label for="rookie">Rookie:</label>
-    <input type="checkbox" id="rookie" name="rookie" th:field="*{rookie}"><br><br>
-
-    <label for="brand">Brand:</label>
-    <input type="text" id="brand" name="brand" th:field="*{brand}" required><br><br>
-
+    <table>
+        <tr>
+            <td><label for="sport">Sport:</label></td>
+            <td><input type="text" id="sport" name="sport" th:field="*{sport}" required></td>
+        </tr>
+        <tr>
+            <td><label for="player">Player:</label></td>
+            <td><input type="text" id="player" name="player" th:field="*{player}" required></td>
+        </tr>
+        <tr>
+            <td><label for="numbered">Numbered:</label></td>
+            <td><input type="checkbox" id="numbered" name="numbered" th:field="*{numbered}"></td>
+        </tr>
+        <tr>
+            <td><label for="price">Price:</label></td>
+            <td><input type="number" id="price" name="price" th:field="*{price}" required></td>
+        </tr>
+        <tr>
+            <td><label for="yearOfCard">Year of Card:</label></td>
+            <td><input type="text" id="yearOfCard" name="yearOfCard" th:field="*{yearOfCard}" required></td>
+        </tr>
+        <tr>
+            <td><label for="rookie">Rookie:</label></td>
+            <td><input type="checkbox" id="rookie" name="rookie" th:field="*{rookie}"></td>
+        </tr>
+        <tr>
+            <td><label for="brand">Brand:</label></td>
+            <td><input type="text" id="brand" name="brand" th:field="*{brand}" required></td>
+        </tr>
+    </table>
     <button type="submit">Create Card</button>
 </form>
 </body>
