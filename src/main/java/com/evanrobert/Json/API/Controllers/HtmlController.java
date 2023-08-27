@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,6 +18,18 @@ import java.util.List;
 public class HtmlController {
     @Autowired
     CardRepo cardRepo;
+    @GetMapping("/create")
+    public String getCreateACard( Model model){
+        model.addAttribute("cards", new Cards());
+        return "createCard";
+    }
+
+
+    @PostMapping("/create/card")
+    public String createACard(@ModelAttribute Cards cards){
+        cardRepo.save(cards);
+        return "/";
+    }
 
     @GetMapping("/")
     public String getAllCards(Model model) {
