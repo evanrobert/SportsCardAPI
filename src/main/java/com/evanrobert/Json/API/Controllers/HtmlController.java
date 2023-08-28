@@ -26,10 +26,19 @@ public class HtmlController {
 
 
     @PostMapping("/create/card")
-    public String createACard(@ModelAttribute Cards cards){
-        cardRepo.save(cards);
-        return "/";
+    public String createACard(@ModelAttribute Cards cards,Model model) {
+        try {
+            cardRepo.save(cards);
+            return "redirect:/";  // Redirect to the root path
+        } catch (Exception e) {
+            String errorMessage = "Card could not be saved: " + e.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+
+            // Log the error or handle it appropriately
+            return "redirect:/createCard";  // Redirect back to the createCard path
+        }
     }
+
 
     @GetMapping("/")
     public String getAllCards(Model model) {

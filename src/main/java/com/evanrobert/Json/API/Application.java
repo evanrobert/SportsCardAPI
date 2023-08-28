@@ -14,8 +14,7 @@ public class Application implements ApplicationRunner {
 
 	@Autowired
 	CardRepo cardRepo;
-	//Need to rename the userepo to cardRepo.
-	// All Mappers need to work in toggle option
+
 
 
 
