@@ -8,7 +8,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #9ba6a5;
             color: #333;
         }
 
@@ -116,6 +116,12 @@
             color: red;
             font-size: 20px;
         }
+        .table-divider {
+    border-right: 2px solid black;
+    padding-right: 10px;
+     color: black;
+}
+
     </style>
     <script>
         function showSearchForm(formId) {
@@ -210,14 +216,14 @@
         </thead>
         <tbody>
         <tr th:each="card : ${cards}">
-            <td th:text="${card.id}"></td>
-            <td th:text="${card.sport}"></td>
-            <td th:text="${card.player}"></td>
-            <td th:text="${card.numbered}"></td>
-            <td th:text="${card.price}"></td>
-            <td th:text="${card.yearOfCard}"></td>
-            <td th:text="${card.rookie}"></td>
-            <td th:text="${card.brand}"></td>
+            <td><div class="table-divider" th:text="${card.id}"></div></td>
+            <td><div class="table-divider" th:text="${card.sport}"></div></td>
+            <td><div class="table-divider" th:text="${card.player}"></div></td>
+            <td><div class="table-divider" th:text="${card.numbered}"></div></td>
+            <td><div class="table-divider" th:text="${card.price}"></div></td>
+            <td><div class="table-divider" th:text="${card.yearOfCard}"></div></td>
+            <td><div class="table-divider" th:text="${card.rookie}"></div></td>
+            <td><div class="table-divider" th:text="${card.brand}"></div></td>
         </tr>
         </tbody>
     </table>
