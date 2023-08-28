@@ -85,7 +85,7 @@ public class HtmlController {
     }
 
     @GetMapping("/get/card/by/rookie")
-    public String getCardByIsRookie(@RequestParam(value = "rookie", required = false) Boolean rookie, RedirectAttributes redirectAttributes) {
+    public String getCardByIsRookie(@RequestParam(value = "rookie", required = false) Boolean rookie,RedirectAttributes redirectAttributes) {
         if (rookie == null) {
             redirectAttributes.addFlashAttribute("error", "Please select whether the card is a rookie.");
             return "redirect:/"; // Redirect to a relevant URL
