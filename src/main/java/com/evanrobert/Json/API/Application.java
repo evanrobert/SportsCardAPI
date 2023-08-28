@@ -22,6 +22,12 @@ public class Application implements ApplicationRunner {
 		SpringApplication.run(Application.class, args);
 	}
 
+	/**
+	 *
+	 * @param args incoming application arguments
+	 * @throws Exception
+	 * Adding two cards if card list is empty
+	 */
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		Cards cards = new Cards();
@@ -36,7 +42,7 @@ public class Application implements ApplicationRunner {
 			cardRepo.save(newUser);
 			cardRepo.save(newCard2);
 			cardRepo.flush();
-			//Populating two cards if the userRepo is empty.
+
 		}
 
 	}
