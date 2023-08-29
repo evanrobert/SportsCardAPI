@@ -97,8 +97,14 @@ public class HtmlController {
     }
 
 
-
-
+    /**
+     * Takes in a price, checks for prices less than or greater than entered amount.
+     * @param price
+     * @param comparison
+     * @param model
+     * @param redirectAttributes
+     * @return
+     */
 
     @GetMapping("/get/card/by/price")
     public String getCardByPrice(@RequestParam("price") double price, @RequestParam("comparison") String comparison,
