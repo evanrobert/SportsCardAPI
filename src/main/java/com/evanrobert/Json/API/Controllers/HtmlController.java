@@ -60,6 +60,19 @@ public class HtmlController {
         model.addAttribute("cards", cards);
         return "cards";
     }
+    /**
+     * Retrieves a list of cards based on the provided brand and prepares the view for display.
+     *
+     * This method takes in a String parameter indicating the brand of cards to retrieve.
+     * It queries the card repository to retrieve cards based on the provided brand and prepares
+     * the model with the list of cards matching the brand. If no cards are found for the given brand,
+     * an error attribute is added for redirection to notify the user.
+     *
+     * @param brand The brand of cards to retrieve.
+     * @param model The model to add attributes for the view.
+     * @param redirectAttributes Used for adding attributes to a redirect.
+     * @return The name of the view template ("cards" in this case) for displaying the filtered cards.
+     */
 
     @GetMapping("/get/card/by/brand")
     public String getCardByBrand(@RequestParam("brand") String brand, Model model, RedirectAttributes redirectAttributes) {
@@ -72,6 +85,19 @@ public class HtmlController {
         return "cards";
 
     }
+    /**
+     * Retrieves a list of cards based on the numbered status provided and prepares the view for display.
+     *
+     * This method takes in a boolean parameter indicating whether the cards should be numbered or not.
+     * It queries the card repository to retrieve cards based on the provided numbered status and prepares
+     * the model with the list of filtered cards. If no numbered cards are found, an error attribute is added
+     * for redirection to notify the user.
+     *
+     * @param numbered A boolean indicating whether the cards should be numbered or not.
+     * @param model The model to add attributes for the view.
+     * @param redirectAttributes Used for adding attributes to a redirect.
+     * @return The name of the view template ("cards" in this case) for displaying the filtered cards.
+     */
 
     @GetMapping("/get/card/by/numbered")
     public String getCardByIsNumbered(@RequestParam("numbered") boolean numbered, Model model, RedirectAttributes redirectAttributes) {
