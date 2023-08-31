@@ -83,6 +83,18 @@ public class HtmlController {
         return "cards";
 
     }
+    /**
+     * Retrieves a list of cards based on the rookie status provided and redirects to the appropriate view.
+     *
+     * This method takes in a boolean parameter indicating whether the cards should be rookies or not.
+     * It queries the card repository to retrieve cards based on the provided rookie status and redirects
+     * to a view displaying the filtered cards. If the "rookie" parameter is not provided, a flash error
+     * message is added and the user is redirected to the root URL for appropriate selection.
+     *
+     * @param rookie A boolean indicating whether the cards should be rookies or not (optional).
+     * @param redirectAttributes Used for adding attributes to a redirect.
+     * @return A redirection to the relevant URL either for displaying cards or prompting for selection.
+     */
 
     @GetMapping("/get/card/by/rookie")
     public String getCardByIsRookie(@RequestParam(value = "rookie", required = false) Boolean rookie,RedirectAttributes redirectAttributes) {
@@ -98,12 +110,13 @@ public class HtmlController {
 
 
     /**
-     * Takes in a price, checks for prices less than or greater than entered amount.
-     * @param price
-     * @param comparison
-     * @param model
-     * @param redirectAttributes
-     * @return
+     * Retrieves a list of cards based on the given price and comparison criteria.
+     *
+     * @param price The price to compare against.
+     * @param comparison The comparison criteria ("greaterThan" or "lessThan").
+     * @param model The model to add attributes for the view.
+     * @param redirectAttributes Used for adding attributes to a redirect.
+     * @return The name of the view template ("cards" in this case).
      */
 
     @GetMapping("/get/card/by/price")
