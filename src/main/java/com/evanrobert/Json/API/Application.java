@@ -22,6 +22,7 @@ public class Application implements ApplicationRunner {
 		SpringApplication.run(Application.class, args);
 	}
 
+
 	/**
 	 *
 	 * @param args incoming application arguments
@@ -37,10 +38,14 @@ public class Application implements ApplicationRunner {
 					.player("bill russell").sport("Basketball").price(500.00).rookie(false).numbered(true)
 					.yearOfCard("1965").brand("Fleer")
 					.build();
-			Cards newCard2 = Cards.builder().player("Michael Jordan").sport("Basketball").price(50.00).yearOfCard("2000").numbered(false).rookie(false).brand("Fleer").build();
+			Cards newCard2 = Cards.builder().player("Michael Jordan").sport("Basketball")
+					.price(50.00).yearOfCard("2000").numbered(false).rookie(false).brand("Fleer").build();
 
+			Cards newCard3 = Cards.builder().player("Julio Rodrioguez").sport("Baseball").price(250.00).yearOfCard("2021")
+				.numbered(true).rookie(true).brand("Topps").build();
 			cardRepo.save(newUser);
 			cardRepo.save(newCard2);
+			cardRepo.save(newCard3);
 			cardRepo.flush();
 
 		}
