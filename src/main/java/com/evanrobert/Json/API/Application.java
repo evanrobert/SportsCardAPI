@@ -14,7 +14,11 @@ public class Application implements ApplicationRunner {
 
 	@Autowired
 	CardRepo cardRepo;
-
+//Some things to add:
+	//Add a users Section
+	// Add security?
+	// Fake billing option to buy sell trade cards?
+	//
 
 
 
