@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,6 +38,12 @@ public class Cards {
 
     @NotEmpty
     private String brand;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserInfo userinfo;
+
+
 
     @JsonIgnore
     public boolean isEmpty() {
