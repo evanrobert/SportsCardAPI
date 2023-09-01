@@ -16,8 +16,9 @@ public class Application implements ApplicationRunner {
 	CardRepo cardRepo;
 //Some things to add:
 	//Add a users Section
-	// Add security?
+	// Add security?/ Authentication?
 	// Fake billing option to buy sell trade cards?
+	// API key?
 	//
 
 
