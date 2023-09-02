@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Collections;
+
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -29,11 +31,14 @@ PasswordEncoder passwordEncoder;
             return User.builder()
                     .username(user.getUsername())
                     .password(passwordEncoder.encode(user.getPassword()))
+                    .authorities(Collections.emptyList()) // No authorities assigned
                     .build();
         } else {
             throw new UsernameNotFoundException("User not found: " + username);
         }
     }
+
+
 }
 
 
