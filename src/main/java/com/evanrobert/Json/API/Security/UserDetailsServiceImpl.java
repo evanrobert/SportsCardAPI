@@ -9,19 +9,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import java.util.Collections;
 
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-@Autowired
-UserLoginDetailsRepo userRepository;
-@Autowired
-PasswordEncoder passwordEncoder;
-
-
+    @Autowired
+    UserLoginDetailsRepo userRepository;
 
 
     @Override
@@ -30,16 +26,15 @@ PasswordEncoder passwordEncoder;
         if (user != null) {
             return User.builder()
                     .username(user.getUsername())
-                    .password(passwordEncoder.encode(user.getPassword()))
+                    .password(user.getPassword())
                     .authorities(Collections.emptyList())
                     .build();
         } else {
             throw new UsernameNotFoundException("User not found: " + username);
         }
     }
-
-
 }
+
 
 
 
