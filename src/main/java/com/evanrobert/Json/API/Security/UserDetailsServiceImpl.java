@@ -31,7 +31,7 @@ PasswordEncoder passwordEncoder;
             return User.builder()
                     .username(user.getUsername())
                     .password(passwordEncoder.encode(user.getPassword()))
-                    .authorities(Collections.emptyList()) // No authorities assigned
+                    .authorities(Collections.emptyList())
                     .build();
         } else {
             throw new UsernameNotFoundException("User not found: " + username);

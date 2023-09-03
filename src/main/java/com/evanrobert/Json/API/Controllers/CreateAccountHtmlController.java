@@ -24,7 +24,7 @@ public class CreateAccountHtmlController {
     @PostMapping("/create/new/account")
     public String createNewAccount(@ModelAttribute UserDetailService userDetailService, String username, String password) {
         userDetailService.setUsername(username);
-        userDetailService.setPassword(password);
+        userDetailService.setPassword(passwordEncoder.encode(password));
         userLoginDetailsRepo.save(userDetailService);
         return "cards";
     }
