@@ -1,7 +1,9 @@
 package com.evanrobert.Json.API.Controllers;
 
 import com.evanrobert.Json.API.Model.Cards;
+import com.evanrobert.Json.API.Model.UserDetailService;
 import com.evanrobert.Json.API.Repos.CardRepo;
+import com.evanrobert.Json.API.Repos.UserLoginDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,8 @@ import java.util.List;
 public class HtmlController {
     @Autowired
     CardRepo cardRepo;
+    @Autowired
+    UserLoginDetailsRepo userLoginDetailsRepo;
     @GetMapping("/create")
     public String getCreateACard( Model model){
         model.addAttribute("cards", new Cards());
@@ -26,7 +31,10 @@ public class HtmlController {
 
 
     @PostMapping("/create/card")
-    public String createACard(@ModelAttribute Cards cards,Model model) {
+    public String createACard(@ModelAttribute Cards cards, Model model, Principal principal) {
+        String username = principal.getName();
+        UserDetailService userDetailService = userLoginDetailsRepo.findByUsername(username);
+        cards.setUserDetailService(userDetailService);
         try {
             cardRepo.save(cards);
             return "redirect:/";  // Redirect to the root path

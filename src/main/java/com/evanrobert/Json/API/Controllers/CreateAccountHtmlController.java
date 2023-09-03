@@ -23,10 +23,12 @@ public class CreateAccountHtmlController {
     }
     @PostMapping("/create/new/account")
     public String createNewAccount(@ModelAttribute UserDetailService userDetailService, String username, String password) {
+        String encodedPassword = passwordEncoder.encode(password);
         userDetailService.setUsername(username);
-        userDetailService.setPassword(passwordEncoder.encode(password));
+        userDetailService.setPassword(encodedPassword);
         userLoginDetailsRepo.save(userDetailService);
         return "cards";
     }
+
 
 }
