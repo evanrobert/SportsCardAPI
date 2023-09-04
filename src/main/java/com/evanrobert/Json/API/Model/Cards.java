@@ -40,11 +40,12 @@ public class Cards {
     private String brand;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_information")
     private UserInfo userinfo;
     @ManyToOne
     @JoinColumn(name = "user_login_id")
     private UserDetailService userDetailService;
+
 
 
 
