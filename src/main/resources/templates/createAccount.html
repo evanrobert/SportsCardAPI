@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
-<h1>Create a New Account</h1>
-<form action="/create/new/account" method="post" th:object="${userDetailService}">
+<html xmlns:th="http://www.thymeleaf.org">
+<form action="/create/new/account" method="post" th:object="${userDetailService}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" th:field="*{username}" required>
     <br><br>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" th:field="*{password}" required>
     <br><br>
+
+    <!-- userInfo fields -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="userInfo.name" th:field="*{userInfo.name}" required>
+    <br><br>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="userInfo.email" th:field="*{userInfo.email}" required>
+    <br><br>
+
     <input type="submit" value="Register">
 </form>
-</body>
 </html>
+
+
+
+
