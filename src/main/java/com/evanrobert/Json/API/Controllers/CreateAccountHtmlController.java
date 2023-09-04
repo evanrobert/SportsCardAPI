@@ -12,29 +12,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.security.Principal;
+
 
 @Controller
 public class CreateAccountHtmlController {
     @Autowired
     UserLoginDetailsRepo userLoginDetailsRepo;
-    @Autowired
-    UserInformationRepo userInformationRepo;
+
     @Autowired
     PasswordEncoder passwordEncoder;
     @GetMapping("/create/account")
     public String createAccount(Model model){
         model.addAttribute("userDetailService", new UserDetailService());
+        model.addAttribute("userInfo",new UserInfo());
 
         return "createAccount";
     }
     @PostMapping("/create/new/account")
-    public String createNewAccount(@ModelAttribute UserDetailService userDetailService,UserInfo userInfo, String username, String password) {
+    public String createNewAccount(@ModelAttribute UserDetailService userDetailService, UserInfo userInfo, String name, String email, String username, String password) {
         String encodedPassword = passwordEncoder.encode(password);
         userDetailService.setUsername(username);
         userDetailService.setPassword(encodedPassword);
-        userInfo.setUserDetailService(userDetailService);
+        userInfo.setName(name);
+        userInfo.setEmail(email);
         userLoginDetailsRepo.save(userDetailService);
+
         return "cards";
-    }
+
+
+}
 }
