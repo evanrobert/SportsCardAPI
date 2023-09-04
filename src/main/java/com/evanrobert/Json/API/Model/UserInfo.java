@@ -7,8 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -19,12 +18,16 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
+
     private String name;
-    @NotEmpty
+
     private String email;
-    //Need to add relationship to connect Cards and Users here...
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_login_id")
+    private UserDetailService userDetailService;
 
 }
+
+
+
+
