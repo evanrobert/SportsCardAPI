@@ -2,7 +2,9 @@ package com.evanrobert.Json.API.Controllers;
 
 import com.evanrobert.Json.API.Model.Cards;
 import com.evanrobert.Json.API.Model.UserDetailService;
+import com.evanrobert.Json.API.Model.UserInfo;
 import com.evanrobert.Json.API.Repos.CardRepo;
+import com.evanrobert.Json.API.Repos.UserInformationRepo;
 import com.evanrobert.Json.API.Repos.UserLoginDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class HtmlController {
     CardRepo cardRepo;
     @Autowired
     UserLoginDetailsRepo userLoginDetailsRepo;
+    @Autowired
+    UserInformationRepo userInformationRepo;
     @GetMapping("/create")
     public String getCreateACard( Model model){
         model.addAttribute("cards", new Cards());
@@ -33,7 +37,10 @@ public class HtmlController {
     @PostMapping("/create/card")
     public String createACard(@ModelAttribute Cards cards, Model model, Principal principal) {
         String username = principal.getName();
+        String name = principal.getName();
         UserDetailService userDetailService = userLoginDetailsRepo.findByUsername(username);
+        UserInfo userInfo = userInformationRepo.findByName(name);
+        cards.setUserinfo(userInfo);
         cards.setUserDetailService(userDetailService);
         try {
             cardRepo.save(cards);
