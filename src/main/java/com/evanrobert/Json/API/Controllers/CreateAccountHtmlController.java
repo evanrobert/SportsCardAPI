@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CreateAccountHtmlController {
     @Autowired
+    UserInformationRepo userInformationRepo;
+    @Autowired
     UserLoginDetailsRepo userLoginDetailsRepo;
 
     @Autowired
@@ -29,16 +31,23 @@ public class CreateAccountHtmlController {
         return "createAccount";
     }
     @PostMapping("/create/new/account")
-    public String createNewAccount(@ModelAttribute UserDetailService userDetailService, UserInfo userInfo, String name, String email, String username, String password) {
+    public String createNewAccount(@ModelAttribute UserDetailService userDetailService,
+             @ModelAttribute UserInfo userInfo,
+            String name,
+            String email,
+            String username,
+            String password
+    ) {
         String encodedPassword = passwordEncoder.encode(password);
-        userDetailService.setUsername(username);
-        userDetailService.setPassword(encodedPassword);
         userInfo.setName(name);
         userInfo.setEmail(email);
+        userDetailService.setUsername(username);
+        userDetailService.setPassword(encodedPassword);
+        userInfo.setUserDetailService(userDetailService);
+        userDetailService.setUserInfo(userInfo);
+        userInformationRepo.save(userInfo);
         userLoginDetailsRepo.save(userDetailService);
-
         return "cards";
+    }
 
-
-}
 }

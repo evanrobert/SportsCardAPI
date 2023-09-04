@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+
 
 
 @Entity
@@ -22,6 +22,9 @@ public class UserInfo {
     private String name;
 
     private String email;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_Login_id")
+    private UserDetailService userDetailService;
 }
 
 
