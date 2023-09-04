@@ -37,10 +37,7 @@ public class HtmlController {
     @PostMapping("/create/card")
     public String createACard(@ModelAttribute Cards cards, Model model, Principal principal) {
         String username = principal.getName();
-        String name = principal.getName();
         UserDetailService userDetailService = userLoginDetailsRepo.findByUsername(username);
-        UserInfo userInfo = userInformationRepo.findByName(name);
-        cards.setUserinfo(userInfo);
         cards.setUserDetailService(userDetailService);
         try {
             cardRepo.save(cards);
