@@ -32,11 +32,11 @@ public class CreateAccountHtmlController {
     }
     @PostMapping("/create/new/account")
     public String createNewAccount(@ModelAttribute UserDetailService userDetailService,
-             @ModelAttribute UserInfo userInfo,
-            String name,
-            String email,
-            String username,
-            String password
+                                   @ModelAttribute UserInfo userInfo,
+                                   String name,
+                                   String email,
+                                   String username,
+                                   String password
     ) {
         String encodedPassword = passwordEncoder.encode(password);
         userInfo.setName(name);
@@ -51,3 +51,4 @@ public class CreateAccountHtmlController {
     }
 
 }
+
