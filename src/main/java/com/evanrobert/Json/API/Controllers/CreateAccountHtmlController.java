@@ -30,6 +30,14 @@ public class CreateAccountHtmlController {
 
         return "createAccount";
     }
+
+    /**
+     * Handles the creation of a new user account based on form input.
+     * @param userDetailService The UserDetailService object containing user login details.
+     * @param username The username obtained from the registration form.
+     * @param password The password obtained from the registration form.
+     * @return The view name to navigate to after account creation (e.g., "cards").
+     */
     @PostMapping("/create/new/account")
     public String createNewAccount(
             @ModelAttribute UserDetailService userDetailService, String username, String password) {
@@ -44,9 +52,10 @@ public class CreateAccountHtmlController {
 
         userInfo.setUserDetailService(userDetailService);
         userDetailService.setUserInfo(userInfo);
-        
+
         userInformationRepo.save(userInfo);
         userLoginDetailsRepo.save(userDetailService);
+
         return "cards";
     }
 
