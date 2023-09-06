@@ -31,20 +31,20 @@ public class CreateAccountHtmlController {
         return "createAccount";
     }
     @PostMapping("/create/new/account")
-    public String createNewAccount(@ModelAttribute UserDetailService userDetailService,
-                                   @ModelAttribute UserInfo userInfo,
-                                   String name,
-                                   String email,
-                                   String username,
-                                   String password
-    ) {
+    public String createNewAccount(
+            @ModelAttribute UserDetailService userDetailService, String username, String password) {
+
         String encodedPassword = passwordEncoder.encode(password);
-        userInfo.setName(name);
-        userInfo.setEmail(email);
+        UserInfo userInfo = userDetailService.getUserInfo();
+        userInfo.setName(userDetailService.getUserInfo().getName());
+        userInfo.setEmail(userDetailService.getUserInfo().getEmail());
+
         userDetailService.setUsername(username);
         userDetailService.setPassword(encodedPassword);
+
         userInfo.setUserDetailService(userDetailService);
         userDetailService.setUserInfo(userInfo);
+        
         userInformationRepo.save(userInfo);
         userLoginDetailsRepo.save(userDetailService);
         return "cards";
