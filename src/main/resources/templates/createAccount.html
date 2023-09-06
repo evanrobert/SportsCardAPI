@@ -1,24 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<form action="/create/new/account" method="post" th:object="${userDetailService}"
-      xmlns:th="http://www.w3.org/1999/xhtml">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" th:field="*{username}" required>
-    <br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" th:field="*{password}" required>
-    <br><br>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" th:field="*{userInfo.name}" required>
-    <br><br>
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" th:field="*{userInfo.email}" required>
-    <br><br>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 300px;
+            margin: 0 auto;
+        }
 
+        tr {
+            border-bottom: 1px solid #ccc;
+        }
 
+        td:nth-child(1) {
+            text-align: right;
+            padding: 8px;
+            font-weight: bold;
+        }
+
+        td:nth-child(2) {
+            padding: 8px;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<form action="/create/new/account" method="post" th:object="${userDetailService}" th:action="@{/create/new/account}" xmlns:th="http://www.w3.org/1999/xhtml">
+    <table>
+        <tr>
+            <td><label for="username">Username:</label></td>
+            <td><input type="text" id="username" name="username" th:field="*{username}" required></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input type="password" id="password" name="password" th:field="*{password}" required></td>
+        </tr>
+        <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" id="name" name="name" th:field="*{userInfo.name}" required></td>
+        </tr>
+        <tr>
+            <td><label for="email">Email:</label></td>
+            <td><input type="text" id="email" name="email" th:field="*{userInfo.email}" required></td>
+        </tr>
+    </table>
     <input type="submit" value="Register">
 </form>
+</body>
 </html>
+
 
 
 
