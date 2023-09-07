@@ -39,8 +39,13 @@ public class HtmlController {
         String username = principal.getName();
         UserDetailService userDetailService = userLoginDetailsRepo.findByUsername(username);
         cards.setUserDetailService(userDetailService);
+
         try {
-            cardRepo.save(cards);
+            // Ensure that the Cards object is associated with the UserInfo
+            UserInfo userInfo = userDetailService.getUserInfo(); // Get the UserInfo associated with the UserDetailService
+            cards.setUserinfo(userInfo);// Set the UserInfo in the Cards entity
+
+            cardRepo.save(cards); // This should save both Cards and UserInfo due to the relationship
             return "redirect:/";  // Redirect to the root path
         } catch (Exception e) {
             String errorMessage = "Card could not be saved: " + e.getMessage();
@@ -50,6 +55,7 @@ public class HtmlController {
             return "redirect:/createCard";  // Redirect back to the createCard path
         }
     }
+
 
 
     @GetMapping("/")
