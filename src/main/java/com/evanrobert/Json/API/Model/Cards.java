@@ -41,6 +41,9 @@ public class Cards {
     @ManyToOne
     @JoinColumn(name = "user_information")
     private UserInfo userinfo;
+
+
+
     @ManyToOne
     @JoinColumn(name = "user_login_id")
     private UserDetailService userDetailService;

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
@@ -25,6 +25,9 @@ public class UserInfo {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_Login_id")
     private UserDetailService userDetailService;
+
+    @OneToMany(mappedBy = "userinfo")
+    private List<Cards> cards;
 }
 
 
