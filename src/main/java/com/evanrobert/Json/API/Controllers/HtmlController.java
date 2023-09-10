@@ -33,7 +33,19 @@ public class HtmlController {
         return "createCard";
     }
 
-
+    /**
+     * Handles the HTTP POST request to create a new card in the application.
+     *
+     * This method receives card information from a form submission, associates it with the currently
+     * authenticated user, and saves it to the database. If successful, it redirects the user to the
+     * home page. If an error occurs during the process, it redirects the user back to the card creation page
+     * and displays an error message.
+     *
+     * @param cards The Cards object containing card information submitted from the form.
+     * @param model The Model object used to add attributes to the view.
+     * @param principal The Principal object representing the currently authenticated user.
+     * @return A String representing the view or page to redirect to after the operation.
+     */
     @PostMapping("/create/card")
     public String createACard(@ModelAttribute Cards cards, Model model, Principal principal) {
         String username = principal.getName();
@@ -41,35 +53,33 @@ public class HtmlController {
         cards.setUserDetailService(userDetailService);
 
         try {
-            // Ensure that the Cards object is associated with the UserInfo
-            UserInfo userInfo = userDetailService.getUserInfo(); // Get the UserInfo associated with the UserDetailService
-            cards.setUserinfo(userInfo);// Set the UserInfo in the Cards entity
 
-            cardRepo.save(cards); // This should save both Cards and UserInfo due to the relationship
-            return "redirect:/";  // Redirect to the root path
+            UserInfo userInfo = userDetailService.getUserInfo();
+            cards.setUserinfo(userInfo);
+
+            cardRepo.save(cards);
+            return "redirect:/";
         } catch (Exception e) {
             String errorMessage = "Card could not be saved: " + e.getMessage();
             model.addAttribute("errorMessage", errorMessage);
 
-            // Log the error or handle it appropriately
-            return "redirect:/createCard";  // Redirect back to the createCard path
+
+            return "redirect:/createCard";
         }
     }
-
-
 
     @GetMapping("/")
     public String getAllCards(Model model) {
         List<Cards> cards = cardRepo.findAll();
         model.addAttribute("cards", cards);
-        return "cards"; // Returning the name of the HTML template
+        return "cards";
     }
 
     @GetMapping("/get/cards/sport")
     public String getCardsBySport(@RequestParam("sport") String sport, Model model) {
         List<Cards> cards = cardRepo.findCardBySportStartingWith(sport);
         model.addAttribute("cards", cards);
-        return "cards"; // Returning the name of the HTML template
+        return "cards";
     }
 
     @GetMapping("/get/card/yearOfCard")
