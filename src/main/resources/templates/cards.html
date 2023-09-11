@@ -163,12 +163,14 @@
 </div>
 
 <div class="container">
-    <button onclick="showSearchForm('searchBySportForm')">Select card by Sport</button>
-    <button onclick="showSearchForm('searchByYearForm')">Select card by Year</button>
-    <button onclick="showSearchForm('searchByBrandForm')">Select card by Brand</button>
-    <button onclick="showSearchForm('searchByNumberedForm')">Select card by numbered</button>
-    <button onclick="showSearchForm('searchByRookieForm')">Select card by Rookie</button>
-    <button onclick="showSearchForm('searchByPriceForm')">Select card by Price</button>
+    <select onchange="showSearchForm(this.value)">
+        <option value="searchBySportForm">Select card by Sport</option>
+        <option value="searchByYearForm">Select card by Year</option>
+        <option value="searchByBrandForm">Select card by Brand</option>
+        <option value="searchByNumberedForm">Select card by Numbered</option>
+        <option value="searchByRookieForm">Select card by Rookie</option>
+        <option value="searchByPriceForm">Select card by Price</option>
+    </select>
 
     <form method="get" th:action="@{/get/cards/sport/{sport}(sport=${sport})}" class="search-form" id="searchBySportForm">
         <label for="sport">Select a Sport:</label>
@@ -210,13 +212,7 @@
 
         <button type="submit">Search</button>
         <div class="error-message" th:if="${error}" th:text="${error}"></div>
-
     </form>
-
-
-
-
-
     <table>
         <thead>
         <tr>
