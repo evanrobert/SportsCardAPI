@@ -14,14 +14,6 @@ public class Application implements ApplicationRunner {
 
 	@Autowired
 	CardRepo cardRepo;
-//Some things to add:
-	//Add a users Section
-	// Add security?/ Authentication?
-	// Fake billing option to buy sell trade cards?
-	// API key?
-	//
-
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
