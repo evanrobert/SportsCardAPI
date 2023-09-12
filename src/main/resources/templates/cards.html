@@ -4,141 +4,143 @@
     <meta charset="UTF-8">
     <title>All Cards</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #9ba6a5;
-            color: #A0A0A0;;
-        }
-
-       .header {
-    font-family: Impact, fantasy;
-    background-color: #222;
-    color: #A0A0A0;;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-}
-
-.header-buttons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.create a {
-  color: #A0A0A0;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px 10px;
-    background-color: #333;
-}
-
-.create a:hover {
-    background-color: #555;
-}
-
-.homepage-link a {
-      color: #A0A0A0;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px 10px;
-    background-color: #333;
-}
-
-.homepage-link a:hover {
-    background-color: #555;
-}
-.create-account a {
-      color: #A0A0A0;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px 10px;
-    background-color: #333;
-}
-
-.create-account a:hover {
-    background-color: #555;
-}
-
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
-
-            background-color: #fff;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-           background-color: #A0A0A0;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-           background-color: #A0A0A0;
-        }
-
-        th {
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1b1b1b; /* Dark background color */
         color: #A0A0A0;
+    }
+
+    .header {
+        font-family: Impact, fantasy;
         background-color: #222;
-        }
+        color: #A0A0A0;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
 
-        form {
-            margin-top: 20px;
-        }
+    .header-buttons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
+    .create a {
+        color: #A0A0A0;
+        text-decoration: none;
+        border: 1px solid #555; /* Darker border color */
+        border-radius: 4px;
+        padding: 5px 10px;
+        background-color: #333;
+    }
 
-        .search-form {
-            display: none;
-        }
+    .create a:hover {
+        background-color: #555; /* Darker hover background color */
+    }
 
-        input[type="text"], input[type="checkbox"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+    .homepage-link a {
+        color: #A0A0A0;
+        text-decoration: none;
+        border: 1px solid #555;
+        border-radius: 4px;
+        padding: 5px 10px;
+        background-color: #333;
+    }
 
-        button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    .homepage-link a:hover {
+        background-color: #555;
+    }
 
-        button[type="submit"]:hover {
-            background-color: #555;
-        }
-        .error-message {
-            color: red;
-            font-size: 20px;
-        }
-        .table-divider {
-    border-right: 2px solid black;
-    padding-right: 10px;
-     color: black;
-}
+    .create-account a {
+        color: #A0A0A0;
+        text-decoration: none;
+        border: 1px solid #555;
+        border-radius: 4px;
+        padding: 5px 10px;
+        background-color: #333;
+    }
 
-    </style>
+    .create-account a:hover {
+        background-color: #555;
+    }
+
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #333; /* Darker container background color */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #333; /* Darker table background color */
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #555; /* Darker border color */
+        color: #A0A0A0; /* Text color */
+    }
+
+    th {
+        color: #A0A0A0;
+        background-color: #222; /* Darker header background color */
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .search-form {
+        display: none;
+    }
+
+    input[type="text"], input[type="checkbox"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        color: #A0A0A0;
+    }
+
+    button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #555; /* Darker button background color */
+        color: #A0A0A0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #333; /* Hover background color */
+    }
+
+    .error-message {
+        color: red;
+        font-size: 20px;
+    }
+
+    .table-divider {
+        border-right: 2px solid #A0A0A0; /* Divider color */
+        padding-right: 10px;
+        color: #A0A0A0;
+    }
+</style>
+
     <script>
         function showSearchForm(formId) {
             var forms = document.getElementsByClassName("search-form");
