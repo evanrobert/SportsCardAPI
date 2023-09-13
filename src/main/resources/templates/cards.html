@@ -4,141 +4,121 @@
     <meta charset="UTF-8">
     <title>All Cards</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #1b1b1b; /* Dark background color */
-        color: #A0A0A0;
-    }
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background color */
+    color: #333;
+}
 
-    .header {
-        font-family: Impact, fantasy;
-        background-color: #222;
-        color: #A0A0A0;
-        padding: 20px;
-        text-align: center;
-        position: relative;
-    }
+.header {
+    font-family: Impact, fantasy;
+    background-color: #007bff; /* Dodger Blue header background color */
+    color: #fff; /* White text color */
+    padding: 20px;
+    text-align: center;
+}
 
-    .header-buttons {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        display: flex;
-        gap: 10px;
-    }
+.header-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
 
-    .create a {
-        color: #A0A0A0;
-        text-decoration: none;
-        border: 1px solid #555; /* Darker border color */
-        border-radius: 4px;
-        padding: 5px 10px;
-        background-color: #333;
-    }
+.create a,
+.homepage-link a,
+.create-account a {
+    color: #007bff; /* Dodger Blue link color */
+    text-decoration: none;
+    border: 1px solid #007bff; /* Dodger Blue border color */
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #fff; /* White background color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-    .create a:hover {
-        background-color: #555; /* Darker hover background color */
-    }
+.create a:hover,
+.homepage-link a:hover,
+.create-account a:hover {
+    background-color: #007bff; /* Dodger Blue hover background color */
+    color: #fff; /* White text color on hover */
+}
 
-    .homepage-link a {
-        color: #A0A0A0;
-        text-decoration: none;
-        border: 1px solid #555;
-        border-radius: 4px;
-        padding: 5px 10px;
-        background-color: #333;
-    }
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White container background color */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .homepage-link a:hover {
-        background-color: #555;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff; /* White table background color */
+}
 
-    .create-account a {
-        color: #A0A0A0;
-        text-decoration: none;
-        border: 1px solid #555;
-        border-radius: 4px;
-        padding: 5px 10px;
-        background-color: #333;
-    }
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc; /* Lighter border color */
+    color: #333; /* Dark text color */
+}
 
-    .create-account a:hover {
-        background-color: #555;
-    }
+th {
+    background-color: #007bff; /* Dodger Blue header background color */
+    color: #fff; /* White text color in headers */
+}
 
-    .container {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #333; /* Darker container background color */
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+form {
+    margin-top: 20px;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background-color: #333; /* Darker table background color */
-    }
+label {
+    display: block;
+    margin-bottom: 5px;
+}
 
-    th, td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #555; /* Darker border color */
-        color: #A0A0A0; /* Text color */
-    }
+.search-form {
+    display: none;
+}
 
-    th {
-        color: #A0A0A0;
-        background-color: #222; /* Darker header background color */
-    }
+input[type="text"],
+input[type="checkbox"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc; /* Lighter border color */
+    border-radius: 4px;
+    color: #333; /* Dark text color */
+}
 
-    form {
-        margin-top: 20px;
-    }
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff; /* Dodger Blue button background color */
+    color: #fff; /* White text color on button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-    label {
-        display: block;
-        margin-bottom: 5px;
-    }
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker Blue on hover */
+}
 
-    .search-form {
-        display: none;
-    }
+.error-message {
+    color: red;
+    font-size: 20px;
+}
 
-    input[type="text"], input[type="checkbox"] {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #555;
-        border-radius: 4px;
-        color: #A0A0A0;
-    }
+.table-divider {
+    border-right: 2px solid #ccc; /* Lighter divider color */
+    padding-right: 10px;
+    color: #333; /* Dark text color */
+}
 
-    button[type="submit"] {
-        padding: 10px 20px;
-        background-color: #555; /* Darker button background color */
-        color: #A0A0A0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button[type="submit"]:hover {
-        background-color: #333; /* Hover background color */
-    }
-
-    .error-message {
-        color: red;
-        font-size: 20px;
-    }
-
-    .table-divider {
-        border-right: 2px solid #A0A0A0; /* Divider color */
-        padding-right: 10px;
-        color: #A0A0A0;
-    }
 </style>
 
     <script>
