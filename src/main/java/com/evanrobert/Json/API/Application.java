@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Application implements ApplicationRunner {
+	// Add API key for users
+	// Allow maybe a certain amount of uses per month?
 
 	@Autowired
 	CardRepo cardRepo;
