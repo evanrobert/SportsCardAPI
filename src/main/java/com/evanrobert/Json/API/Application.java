@@ -40,7 +40,7 @@ public class Application implements ApplicationRunner {
 			Cards newCard2 = Cards.builder().player("Michael Jordan").sport("Basketball")
 					.price(50.00).yearOfCard("2000").numbered(false).rookie(false).brand("Fleer").build();
 
-			Cards newCard3 = Cards.builder().player("Julio Rodrioguez").sport("Baseball").price(250.00).yearOfCard("2021")
+			Cards newCard3 = Cards.builder().player("Julio Rodriguez").sport("Baseball").price(250.00).yearOfCard("2021")
 				.numbered(true).rookie(true).brand("Topps").build();
 			cardRepo.save(newUser);
 			cardRepo.save(newCard2);
