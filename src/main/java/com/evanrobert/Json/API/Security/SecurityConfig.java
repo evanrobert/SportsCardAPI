@@ -26,7 +26,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers().permitAll()
-                .antMatchers("/create","/create/card").authenticated()
+                .antMatchers("/create","/create/card","/view/account").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
