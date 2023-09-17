@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>User Account Info</title>
 </head>
 <body>
-$END$
+<h1>User Information</h1>
+<p>Name: <span th:text="${userInfo.name}"></span></p>
+<p>Email: <span th:text="${userInfo.email}"></span></p>
+
+<h2>User Cards</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Sport</th>
+        <th>Player</th>
+        <th>Numbered</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Rookie</th>
+        <th>Brand</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="card : ${userInfo.cards}">
+        <td th:text="${card.sport}"></td>
+        <td th:text="${card.player}"></td>
+        <td th:text="${card.numbered} ? 'Yes' : 'No'"></td>
+        <td th:text="${card.price}"></td>
+        <td th:text="${card.yearOfCard}"></td>
+        <td th:text="${card.rookie} ? 'Yes' : 'No'"></td>
+        <td th:text="${card.brand}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
