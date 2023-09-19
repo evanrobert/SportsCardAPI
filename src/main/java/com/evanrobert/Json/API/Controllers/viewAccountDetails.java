@@ -36,12 +36,13 @@ public class viewAccountDetails {
             userInfo.setUserDetailService(userDetailService);
 
             // Fetch the name and email from the userInfo object
-            String name = userInfo.getName();
-            String email = userInfo.getEmail();
+
 
             // Add the name and email to the model for rendering in the HTML template
-            model.addAttribute("name", name);
-            model.addAttribute("email", email);
+            // Add the name and email to the model using the correct attribute names
+            model.addAttribute("userInfo", userInfo);
+            model.addAttribute("name", userInfo.getName());
+            model.addAttribute("email", userInfo.getEmail());
 
             return "Account_info";
         }
