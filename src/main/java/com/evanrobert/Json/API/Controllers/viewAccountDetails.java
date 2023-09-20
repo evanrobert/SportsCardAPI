@@ -30,24 +30,18 @@ public class viewAccountDetails {
         UserLoginDetailsRepo userLoginDetailsRepo;
 
         @GetMapping("/view/account")
-        private String getUserInfo(UserInfo userInfo, Principal principal, Model model) {
+        private String getUserInfo(Principal principal, Model model) {
             String username = principal.getName();
             UserDetailService userDetailService = userLoginDetailsRepo.findByUsername(username);
-            userInfo.setUserDetailService(userDetailService);
+            UserInfo userInfo = userDetailService.getUserInfo(); // Retrieve UserInfo from UserDetailService
 
-            // Fetch the name and email from the userInfo object
-
-
-            // Add the name and email to the model for rendering in the HTML template
-            // Add the name and email to the model using the correct attribute names
+            // Fetch the name and email from the userInfo object and add them to the model
             model.addAttribute("userInfo", userInfo);
             model.addAttribute("name", userInfo.getName());
             model.addAttribute("email", userInfo.getEmail());
 
             return "Account_info";
         }
-
-
 
     }
     }
