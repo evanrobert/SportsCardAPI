@@ -4,75 +4,145 @@
     <title>Account Information</title>
 </head>
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #007bff;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border: 2px solid black;
-            padding: 30px;
-            width: 400px;
-            text-align: center;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #007bff;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
 
-        .container h1 {
-        color:  #007bff;
-        }
+    .container {
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border: 2px solid #007bff;
+        padding: 30px;
+        width: 700px;
+        text-align: left;
+    }
 
-        form {
-            margin-top: 20px;
-        }
+    .container h1 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
+    form {
+        margin-top: 20px;
+    }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
 
-        input[type="submit"] {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 20px;
-            background-color: #007bff; /* Dodger Blue background color */
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #0056b3; /* Darker Blue on hover */
-        }
-    </style>
+    input[type="submit"] {
+        display: block;
+        margin: 20px auto;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .divider {
+        border-bottom: 2px solid #ccc;
+        margin: 20px 0;
+    }
+
+    h2 {
+        color: #007bff;
+        font-size: 24px;
+        margin-top: 20px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    li p {
+        margin: 5px 0;
+    }
+</style>
 </head>
 <body>
 <div class="container">
     <h1>User Account Information</h1>
-<p>Name: <span th:text="${userInfo.name}"></span></p>
-<p>Email: <span th:text="${userInfo.email}"></span></p>
-
+    <p><strong>Name:</strong> <span th:text="${userInfo.name}" style="font-size: 20px;"></span></p>
+    <div class="divider"></div>
+    <p><strong>Email:</strong> <span th:text="${userInfo.email}" style="font-size: 20px;"></span></p>
+    <h2>User's Cards</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Sport</th>
+            <th>Player</th>
+            <th>Numbered</th>
+            <th>Price</th>
+            <th>Year</th>
+            <th>Rookie</th>
+            <th>Brand</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="card : ${cards}">
+            <td th:text="${card.sport}"></td>
+            <td th:text="${card.player}"></td>
+            <td th:text="${card.numbered}"></td>
+            <td th:text="${card.price}"></td>
+            <td th:text="${card.yearOfCard}"></td>
+            <td th:text="${card.rookie}"></td>
+            <td th:text="${card.brand}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
