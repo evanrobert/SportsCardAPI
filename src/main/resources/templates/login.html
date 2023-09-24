@@ -25,9 +25,18 @@
             text-align: center;
         }
 
-        .container h1 {
-        color:  #007bff;
-        }
+       @keyframes text-color-change {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: yellow; }
+}
+
+.container h1 {
+    animation-name: text-color-change;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; /* Optional: Loop the animation */
+    animation-timing-function: linear; /* Optional: Use a linear timing function */
+}
 
 
 
