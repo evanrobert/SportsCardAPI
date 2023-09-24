@@ -22,14 +22,23 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         border: 2px solid #007bff;
         padding: 30px;
-        width: 700px;
+        height: 500px;
+        width: 600px;
         text-align: left;
     }
 
-    .container h1 {
-        color: #007bff;
-        margin-bottom: 20px;
-    }
+   @keyframes text-color-change {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: yellow; }
+}
+
+.container h1 {
+    animation-name: text-color-change;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; /* Optional: Loop the animation */
+    animation-timing-function: linear; /* Optional: Use a linear timing function */
+}
 
     form {
         margin-top: 20px;
