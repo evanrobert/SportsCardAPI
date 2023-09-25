@@ -11,14 +11,22 @@
     background-color: #f4f4f4; /* Light background color */
     color: #333;
 }
+      @keyframes text-color-change {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: yellow; }
+}
 
 .header {
     font-family: Impact, fantasy;
     font-size: 20px;
     background-color: #007bff; /* Dodger Blue header background color */
-    color: #fff; /* White text color */
     padding: 20px;
     text-align: center;
+   animation-name: text-color-change;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; /* Optional: Loop the animation */
+    animation-timing-function: linear; /* Optional: Use a linear timing function */
 }
 
 .header-buttons {
