@@ -56,6 +56,7 @@ public class HtmlController {
 
             UserInfo userInfo = userDetailService.getUserInfo();
             cards.setUserinfo(userInfo);
+            cards.setPlayer(cards.getPlayer().toUpperCase());
 
             cardRepo.save(cards);
             return "redirect:/";
